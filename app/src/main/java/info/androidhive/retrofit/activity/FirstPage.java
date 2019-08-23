@@ -1,4 +1,4 @@
-package info.androidhive.retrofit;
+package info.androidhive.retrofit.activity;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import info.androidhive.retrofit.activity.MainActivity;
+import info.androidhive.retrofit.R;
 
 public class FirstPage extends AppCompatActivity {
     public ProgressBar progress;

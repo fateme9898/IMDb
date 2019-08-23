@@ -36,7 +36,7 @@
                 android:textColor="@drawable/textcolor"
                 android:textOff="movie"
                 android:textOn="movie"
-                android:textSize="15dp" />
+                android:textSize="12dp" />
 
 
             <ToggleButton
@@ -51,7 +51,7 @@
                 android:textColor="@drawable/textcolor"
                 android:textOff="tv"
                 android:textOn="tv"
-                android:textSize="15dp" />
+                android:textSize="12dp" />
 
             <ToggleButton
                 android:id="@+id/check_paople"
@@ -66,7 +66,7 @@
                 android:textColor="@drawable/textcolor"
                 android:textOff="people"
                 android:textOn="people"
-                android:textSize="15dp" />
+                android:textSize="12dp" />
 
 
             <EditText

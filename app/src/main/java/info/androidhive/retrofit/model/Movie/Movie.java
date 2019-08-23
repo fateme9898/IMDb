@@ -1,5 +1,7 @@
 package info.androidhive.retrofit.model.Movie;
 
+import android.widget.ImageView;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;

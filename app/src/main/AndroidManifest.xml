@@ -11,7 +11,7 @@
         android:networkSecurityConfig="@xml/xml"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="FirstPage">
+        <activity android:name=".activity.FirstPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
