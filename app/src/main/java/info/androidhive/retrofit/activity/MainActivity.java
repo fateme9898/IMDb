@@ -28,6 +28,7 @@ import info.androidhive.retrofit.adapter.NowPlayingAdapter;
 import info.androidhive.retrofit.adapter.TvAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.db.FavoriteDatabase;
+import info.androidhive.retrofit.db.FavoriteList;
 import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.Movie.MoviesResponse;
 import info.androidhive.retrofit.model.people.Peaple;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     ////////////////////////////////////////////////////////////////////////////
     Spinner spinner ;
+    ImageView fave_btn;
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -308,28 +310,30 @@ account.setOnClickListener(new View.OnClickListener() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false));
 
-        recyclerView.addOnItemTouchListener(new ItemTouchListener(recyclerView) {
-            @Override
-            public boolean onClick(RecyclerView parent, View view, int position, long id) {
-                MoviesAdapter moviesAdapter = (MoviesAdapter) recyclerView.getAdapter();
-                Movie movie = moviesAdapter.product_lists.get(position);
-                Intent intent = new Intent(MainActivity.this, MovieDetail.class);
 
-                intent.putExtra("TYPE", movie.getId());
-                startActivity(intent);
-                return false;
-            }
 
-            @Override
-            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
-                return false;
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean b) {
-
-            }
-        });
+//        recyclerView.addOnItemTouchListener(new ItemTouchListener(recyclerView) {
+//            @Override
+//            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+//                MoviesAdapter moviesAdapter = (MoviesAdapter) recyclerView.getAdapter();
+//                Movie movie = moviesAdapter.product_lists.get(position);
+//                Intent intent = new Intent(MainActivity.this, MovieDetail.class);
+//
+//                intent.putExtra("TYPE", movie.getId());
+//                startActivity(intent);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+//                return false;
+//            }
+//
+//            @Override
+//            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+//
+//            }
+//        });
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
         Call <MoviesResponse> call = apiService.getTopRatedMovies(API_KEY);
