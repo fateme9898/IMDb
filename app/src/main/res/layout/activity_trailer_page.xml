@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <RelativeLayout
+        android:id="@+id/movie"
+        android:layout_width="match_parent"
+        android:layout_height="385dp">
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtube"
+            android:layout_width="match_parent"
+            android:layout_height="382dp">
+
+
+        </com.google.android.youtube.player.YouTubePlayerView>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/information"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_below="@+id/movie"
+
+        >
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray"
+            android:paddingLeft="7dp"
+            android:paddingTop="13dp"
+            android:text=" INFORMATION"
+            android:textColor="@color/orange"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/image_info_trailerpage"
+        android:layout_width="123dp"
+        android:layout_height="180dp"
+        android:layout_below="@id/information"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shape"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp" />
+
+    <TextView
+        android:id="@+id/text_info_trailerpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/information"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="68dp"
+        android:textColor="@color/colorGreyLight" />
+
+    <TextView
+        android:id="@+id/title_info_trailerpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/information"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

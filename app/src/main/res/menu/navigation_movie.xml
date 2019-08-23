@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/navigation_top"
+        android:title="Top rated"
+
+
+        />
+
+    <item
+        android:id="@+id/navigation_pop"
+
+        android:title="Popular" />
+
+    <item
+        android:id="@+id/navigation_upcoming"
+
+        android:title="Upcoming" />
+
+</menu>

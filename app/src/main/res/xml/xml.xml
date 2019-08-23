@@ -1,0 +1,7 @@
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">http://api.themoviedb.org/3/</domain>
+        <domain includeSubdomains="true">cdn.http://api.themoviedb.org/3/</domain>
+    </domain-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

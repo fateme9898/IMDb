@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/topmovie_layout"
+    android:layout_width="match_parent"
+    android:layout_height="290dp"
+
+    android:background="@color/black"
+    android:gravity="center_vertical"
+    android:minHeight="72dp"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/for_see_more">
+
+        <TextView
+            android:id="@+id/text_topmovie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+
+            android:layout_marginTop="105dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/txt_topmovie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+
+            android:layout_marginTop="125dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/rating_top_movie"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="300dp"-->
+            <!--android:layout_marginTop="115dp"-->
+            <!--android:gravity="right"-->
+            <!--android:textColor="@color/colorWhite"-->
+            <!--android:textSize="15dp"-->
+            <!--android:textStyle="bold"-->
+            <!--/>-->
+        <!--<ImageView-->
+            <!--android:layout_width="10dp"-->
+            <!--android:layout_height="10dp"-->
+            <!--app:srcCompat="@mipmap/star"-->
+            <!--android:layout_marginTop="115dp"-->
+            <!--android:layout_marginLeft="310dp"/>-->
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/image_topmovie"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/whole_pic_see_more"
+        android:paddingBottom="3dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="3dp" />
+
+</RelativeLayout>
+
+
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/filterpeople_layout"
+    android:layout_width="match_parent"
+    android:layout_height="165dp"
+    android:background="@drawable/shape_for_itemlist_search"
+    android:gravity="center_vertical"
+    android:minHeight="72dp"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    >
+
+
+    <ImageView
+        android:id="@+id/image_filterpeople"
+        android:layout_width="106dp"
+        android:layout_height="160dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="1dp"
+        android:paddingTop="4dp"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/text_filterpeople"
+        android:layout_width="178dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="60dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="60dp" />
+
+</RelativeLayout>
+
+
+
