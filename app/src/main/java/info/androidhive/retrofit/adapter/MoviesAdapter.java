@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.gestures.GestureDetector;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -23,10 +25,13 @@ import info.androidhive.retrofit.model.Movie.Movie;
 public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolder> {
     public List <Movie> product_lists;
     public Context ct;
+    private ViewHolder.ItemClickListener itemClickListener;
+//    private static ItemClickListener clickListener;
 
-    public MoviesAdapter(List <Movie> product_lists, int list_item_movie, Context ct) {
+    public MoviesAdapter(List <Movie> product_lists, int list_item_movie, Context ct, ViewHolder.ItemClickListener itemClickListener) {
         this.product_lists = product_lists;
         this.ct = ct;
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -76,13 +81,23 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
                     viewHolder.fav_btn.setImageResource(R.drawable.tikbookmark);
                     MainActivity.favoriteDatabase.favoriteDao().addData(favoriteList);
 
-                } else {
+                } else  {
                     viewHolder.fav_btn.setImageResource(R.drawable.addbookmark);
                     MainActivity.favoriteDatabase.favoriteDao().delete(favoriteList);
 
                 }
 
 
+
+
+
+            }
+        });
+
+        viewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClickListener.onClick(v,viewHolder.getAdapterPosition());
             }
         });
     }
@@ -93,9 +108,15 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
         return product_lists.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+
+//    public void setClickListener(ItemClickListener itemClickListener) {
+//        this.clickListener = itemClickListener;
+//    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder   {
         ImageView img, fav_btn;
         TextView tv, rating;
+        RelativeLayout relativeLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -103,7 +124,28 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
             tv = (TextView) itemView.findViewById(R.id.title);
             fav_btn = (ImageView) itemView.findViewById(R.id.fav_btn);
             rating = itemView.findViewById(R.id.rating);
+            relativeLayout = itemView.findViewById(R.id.movies_layout);
 
-        }
+//            itemView.setTag(itemView);
+//            itemView.setOnClickListener(this);
     }
-}
+
+//
+//        @Override
+//        public void onClick(View v) {
+//            if (v.getId()==R.id.movies_layout)
+//                if (clickListener != null)
+//                    clickListener.onClick(itemView,getAdapterPosition());
+//
+//        }
+//    }
+//
+    public interface ItemClickListener {
+         void onClick(View view, int position);
+    }
+
+
+    }}
+
+
+

@@ -50,7 +50,7 @@ public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.On
 
         Intent getid = getIntent();
         Bundle bundle = getid.getExtras();
-        querytrailer = bundle.getInt("TYPE");
+        querytrailer = bundle.getInt("city");
 
 
         getQueryInformation();

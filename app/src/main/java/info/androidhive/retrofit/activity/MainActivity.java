@@ -43,11 +43,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MoviesAdapter.ViewHolder.ItemClickListener {
 
     ////////////////////////////////////////////////////////////////////////////
     Spinner spinner ;
     ImageView fave_btn;
+    MoviesAdapter moviesAdapter;
+    private List<Movie> movies;
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -66,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         product_lists=new ArrayList<>();
+        movies=new ArrayList <>();
 ///////////////////////Intent///////////////////////////////////////////////////////////////////////
 
         ImageView imdb = findViewById(R.id.imdb);
@@ -309,7 +311,10 @@ account.setOnClickListener(new View.OnClickListener() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false));
-
+//
+        moviesAdapter = new MoviesAdapter(movies ,R.layout.list_item_movie, this,this);
+        recyclerView.setAdapter(moviesAdapter);
+//        moviesAdapter.setClickListener(this);
 
 
 //        recyclerView.addOnItemTouchListener(new ItemTouchListener(recyclerView) {
@@ -342,10 +347,11 @@ account.setOnClickListener(new View.OnClickListener() {
             public void onResponse(Call <MoviesResponse> call, Response <MoviesResponse>
                     response) {
                 int statusCode = response.code();
-                List <Movie> movies = response.body().getResults();
+                movies.addAll(response.body().getResults());
+                moviesAdapter.notifyDataSetChanged();
 
-                recyclerView.setAdapter(new MoviesAdapter(movies, R.layout.list_item_movie,
-                        getApplicationContext()));
+//                recyclerView.setAdapter(new MoviesAdapter(movies, R.layout.list_item_movie,
+//                        getApplicationContext(),));
             }
 
             @Override
@@ -482,6 +488,28 @@ account.setOnClickListener(new View.OnClickListener() {
         });
 
     }
+
+    @Override
+    public void onClick(View view, int position) {
+
+        final Movie movie = movies.get(position);
+        Intent i = new Intent(this, MovieDetail.class);
+
+
+        i.putExtra("city", movie.getId());
+        startActivity(i);
+
+    }
+//
+//    @Override
+//    public void onClick(View view, int position) {
+//        final Movie movie = movies.get(position);
+//        Intent i = new Intent(this, MovieDetail.class);
+//        i.putExtra("city", movie.getId());
+//
+//        startActivity(i);
+//
+//    }
 }
 
 
