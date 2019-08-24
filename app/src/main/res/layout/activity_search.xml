@@ -15,6 +15,8 @@
         android:background="@color/black"
         android:layout_alignParentLeft="true">
 
+
+
         <RelativeLayout
             android:id="@+id/re"
             android:layout_width="match_parent"
@@ -24,77 +26,79 @@
             android:layout_alignParentTop="true">
 
 
-            <ToggleButton
-                android:id="@+id/check_movie"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignTop="@+id/check_paople"
-                android:layout_marginEnd="89dp"
-                android:background="@drawable/my_btn_toggle"
-                android:paddingTop="5dp"
-                android:textColor="@drawable/textcolor"
-                android:textOff="movie"
-                android:textOn="movie"
-                android:textSize="12dp" />
-
-
-            <ToggleButton
-                android:id="@+id/check_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignTop="@+id/check_movie"
-                android:layout_marginStart="138dp"
-                android:background="@drawable/my_btn_toggle"
-                android:paddingTop="5dp"
-                android:textColor="@drawable/textcolor"
-                android:textOff="tv"
-                android:textOn="tv"
-                android:textSize="12dp" />
-
-            <ToggleButton
-                android:id="@+id/check_paople"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="26dp"
-                android:layout_marginEnd="-132dp"
-                android:layout_toStartOf="@+id/check_tv"
-                android:background="@drawable/my_btn_toggle"
-                android:paddingTop="5dp"
-                android:textColor="@drawable/textcolor"
-                android:textOff="people"
-                android:textOn="people"
-                android:textSize="12dp" />
-
 
             <EditText
                 android:id="@+id/search_edittext"
-                android:layout_width="292dp"
+                android:layout_width="270dp"
                 android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="38dp"
-                android:layout_marginTop="26dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/shape_for_search_edittex"
                 android:hint="  search"
                 android:paddingLeft="15dp"
                 android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorGreyLight"
-                android:textSize="20dp"
-                tools:ignore="UnknownId" />
+                android:textSize="20dp" />
 
             <ImageButton
 
                 android:id="@+id/search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/search_edittext"
-                android:layout_marginStart="-74dp"
-                android:layout_toEndOf="@+id/check_movie"
+                android:layout_marginTop="30dp"
+                android:layout_toEndOf="@id/search_edittext"
+
+                android:layout_toRightOf="@id/search_edittext"
                 android:background="@color/black"
                 android:src="@mipmap/search" />
+
+
+
+
+            <ToggleButton
+                android:id="@+id/check_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_below="@id/search_edittext"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/my_btn_toggle"
+                android:paddingTop="3dp"
+                android:textColor="@drawable/textcolor"
+                android:textOff="tv"
+                android:textOn="tv"
+                android:textSize="12dp" />
+
+            <ToggleButton
+                android:id="@+id/check_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_below="@id/search_edittext"
+                android:layout_marginTop="8dp"
+                android:layout_toLeftOf="@id/check_tv"
+
+                android:background="@drawable/my_btn_toggle"
+                android:paddingTop="3dp"
+                android:textColor="@drawable/textcolor"
+                android:textOff="movie"
+                android:textOn="movie"
+                android:textSize="12dp" />
+
+            <ToggleButton
+                android:id="@+id/check_paople"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_below="@id/search_edittext"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/check_tv"
+                android:background="@drawable/my_btn_toggle"
+                android:paddingTop="3dp"
+                android:textColor="@drawable/textcolor"
+                android:textOff="people"
+                android:textOn="people"
+                android:textSize="12dp" />
+
+
 
         </RelativeLayout>
 

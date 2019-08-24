@@ -79,7 +79,7 @@
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_above="@id/movies_recycler_view"
-                    android:layout_marginLeft="345dp"
+                    android:layout_alignParentRight="true"
                     android:text="SEE ALL"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15dp" />
@@ -119,8 +119,8 @@
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_above="@id/movies_recycler_view2"
+                    android:layout_alignParentRight="true"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="345dp"
                     android:text="SEE ALL"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15dp" />
