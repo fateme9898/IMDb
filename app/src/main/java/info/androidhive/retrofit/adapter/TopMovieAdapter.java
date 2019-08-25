@@ -23,7 +23,7 @@ import info.androidhive.retrofit.model.UpComming.UpComming;
 
 public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopViewHolder> {
 
-    public List <TopMovie> topMovies;
+    public static List <TopMovie> topMovies;
     private int rowLayout;
     private Context context;
     private String imageurl = "https://image.tmdb.org/t/p/original";

@@ -28,7 +28,7 @@ public class FilterPeopleAdapter extends RecyclerView.Adapter<FilterPeopleAdapte
 
     public static class FilterPeopleViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout filterpeopleLayout;
-        TextView filterpeopleTitle;
+        TextView filterpeopleTitle  ,text_search_DATA;
 
         ImageView image_filterpeople;
 
@@ -39,7 +39,7 @@ public class FilterPeopleAdapter extends RecyclerView.Adapter<FilterPeopleAdapte
             super(v);
             filterpeopleLayout =  v.findViewById(R.id.filterpeople_layout);
             filterpeopleTitle = (TextView) v.findViewById(R.id.text_filterpeople);
-
+            text_search_DATA=v.findViewById(R.id.text_search_DATA);
             image_filterpeople=v.findViewById(R.id.image_filterpeople);
 
         }
@@ -62,7 +62,7 @@ public class FilterPeopleAdapter extends RecyclerView.Adapter<FilterPeopleAdapte
     @Override
     public void onBindViewHolder(FilterPeopleViewHolder holder, final int position) {
         holder.filterpeopleTitle.setText(filterpeople.get(position).getName());
-        //   holder.searchTitle2.setText(search.get(position).getOriginalTitle());
+        holder.text_search_DATA.setText(filterpeople.get(position).getPopularity().toString());
 
         Picasso.with(context)
                 .load("https://image.tmdb.org/t/p/original" + filterpeople

@@ -1,6 +1,7 @@
 package info.androidhive.retrofit.Navigation_Movie;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,8 @@ import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
 import info.androidhive.retrofit.adapter.TopMovieAdapter;
 import info.androidhive.retrofit.adapter.UpCommingAdapter;
+import info.androidhive.retrofit.another.ItemTouchListener;
+import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.Top_movie.TopMovie;
 import info.androidhive.retrofit.model.Top_movie.TopMovieResponse;
 import info.androidhive.retrofit.model.UpComming.UpComming;
@@ -105,6 +108,9 @@ public class NavigationMovieTop extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext().getApplicationContext(),
                 LinearLayoutManager.VERTICAL, false));
+
+
+
 
         ApiInterface apiServic= ApiClient.getClient().create(ApiInterface.class);
         Call<TopMovieResponse> call=apiServic.getTopMovie(API_KEY);

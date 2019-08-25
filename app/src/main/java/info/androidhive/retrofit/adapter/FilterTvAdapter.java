@@ -28,7 +28,7 @@ public class FilterTvAdapter extends RecyclerView.Adapter<FilterTvAdapter.Filter
 
     public static class FilterTvViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout filtertvLayout;
-        TextView filtertvTitle;
+        TextView filtertvTitle , text_search_tv_DATA , text_search_adult;
 
         ImageView image_filtertv;
 
@@ -39,7 +39,8 @@ public class FilterTvAdapter extends RecyclerView.Adapter<FilterTvAdapter.Filter
             super(v);
             filtertvLayout =  v.findViewById(R.id.filtertv_layout);
             filtertvTitle = (TextView) v.findViewById(R.id.text_filtertv);
-
+            text_search_tv_DATA=v.findViewById(R.id.text_search_tv_DATA);
+            text_search_adult=v.findViewById(R.id.text_search_adult);
             image_filtertv=v.findViewById(R.id.image_filtertv);
 
         }
@@ -62,7 +63,8 @@ public class FilterTvAdapter extends RecyclerView.Adapter<FilterTvAdapter.Filter
     @Override
     public void onBindViewHolder(FilterTvViewHolder holder, final int position) {
         holder.filtertvTitle.setText(filtertv.get(position).getName());
-        //   holder.searchTitle2.setText(search.get(position).getOriginalTitle());
+        holder.text_search_tv_DATA.setText(filtertv.get(position).getFirstAirDate());
+        holder.text_search_adult.setText(filtertv.get(position).getOriginalLanguage());
 
         Picasso.with(context)
                 .load("https://image.tmdb.org/t/p/original" + filtertv
