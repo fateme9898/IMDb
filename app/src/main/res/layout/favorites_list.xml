@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/shape4"
+            android:background="@drawable/saved"
             android:padding="8dp">
 
             <ImageView

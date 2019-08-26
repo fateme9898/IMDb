@@ -37,13 +37,13 @@
         tools:layout_editor_absoluteX="16dp" />
     <ImageView
         android:id="@+id/saved"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_width="22dp"
+        android:layout_height="35dp"
         android:layout_alignBottom="@+id/search"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="17dp"
         android:layout_marginTop="24dp"
-        android:background="@mipmap/download" />
+        android:background="@mipmap/bookmarkribbon" />
 
 
 

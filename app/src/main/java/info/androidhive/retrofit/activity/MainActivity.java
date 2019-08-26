@@ -43,13 +43,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements MoviesAdapter.ViewHolder.ItemClickListener {
+public class MainActivity extends AppCompatActivity implements MoviesAdapter.ViewHolder.ItemClickListener, TvAdapter.ViewHolder.ItemClickListenerTv {
 
     ////////////////////////////////////////////////////////////////////////////
     Spinner spinner ;
     ImageView fave_btn;
     MoviesAdapter moviesAdapter;
+    TvAdapter tvAdapter;
     private List<Movie> movies;
+    private  List<Tv> tvs;
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Vie
 
         product_lists=new ArrayList<>();
         movies=new ArrayList <>();
+        tvs=new ArrayList <>();
 ///////////////////////Intent///////////////////////////////////////////////////////////////////////
 
         ImageView imdb = findViewById(R.id.imdb);
@@ -374,30 +377,31 @@ account.setOnClickListener(new View.OnClickListener() {
         recyclerView2.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false));
 
-
-
-        recyclerView2.addOnItemTouchListener(new ItemTouchListener(recyclerView2) {
-            @Override
-            public boolean onClick(RecyclerView parent, View view, int position, long id) {
-                TvAdapter tvAdapter = (TvAdapter) recyclerView2.getAdapter();
-                Tv tv = TvAdapter.tv.get(position);
-                Intent intent = new Intent(MainActivity.this, TvDetail.class);
-
-                intent.putExtra("TYPE", tv.getId());
-                startActivity(intent);
-                return false;
-            }
-
-            @Override
-            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
-                return false;
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean b) {
-
-            }
-        });
+        tvAdapter = new TvAdapter(tvs ,R.layout.list_item_tv, this,this);
+        recyclerView2.setAdapter(tvAdapter);
+//
+//        recyclerView2.addOnItemTouchListener(new ItemTouchListener(recyclerView2) {
+//            @Override
+//            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+//                TvAdapter tvAdapter = (TvAdapter) recyclerView2.getAdapter();
+//                Tv tv = TvAdapter.tv.get(position);
+//                Intent intent = new Intent(MainActivity.this, TvDetail.class);
+//
+//                intent.putExtra("TYPE", tv.getId());
+//                startActivity(intent);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+//                return false;
+//            }
+//
+//            @Override
+//            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+//
+//            }
+//        });
 
 
 
@@ -409,9 +413,12 @@ account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onResponse(Call <TvResponse> call, Response <TvResponse> response) {
                 int statusCode = response.code();
-                List <Tv> tv = response.body().getResults();
-                recyclerView2.setAdapter(new TvAdapter(tv, R.layout.list_item_tv,
-                        getApplicationContext()));
+
+                tvs.addAll(response.body().getResults());
+                tvAdapter.notifyDataSetChanged();
+//                List <Tv> tv = response.body().getResults();
+//                recyclerView2.setAdapter(new TvAdapter(tv, R.layout.list_item_tv,
+//                        getApplicationContext()));
             }
 
             @Override
@@ -498,6 +505,19 @@ account.setOnClickListener(new View.OnClickListener() {
 
         i.putExtra("city", movie.getId());
         startActivity(i);
+
+    }
+
+    @Override
+    public void onClickTv(View view, int position) {
+
+        final Tv tv = tvs.get(position);
+        Intent i = new Intent(this, TvDetail.class);
+
+
+        i.putExtra("TYPE", tv.getId());
+        startActivity(i);
+
 
     }
 //
