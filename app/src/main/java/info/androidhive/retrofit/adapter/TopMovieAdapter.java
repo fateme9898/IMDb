@@ -44,7 +44,7 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
             movieTitle = (TextView) v.findViewById(R.id.text_topmovie);
             image = v.findViewById(R.id.image_topmovie);
             data = (TextView) v.findViewById(R.id.txt_topmovie);
-//            rating=v.findViewById(R.id.rating_top_movie);
+           rating=v.findViewById(R.id.rating);
 
         }
     }
@@ -67,13 +67,14 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
     public void onBindViewHolder(TopViewHolder holder, final int position) {
         holder.movieTitle.setText(topMovies.get(position).getTitle());
         holder.data.setText(topMovies.get(position).getReleaseDate());
-//        holder.rating.setText(topMovies.get(position).getVoteAverage());
+      holder.rating.setText(topMovies.get(position).getVoteAverage().toString());
 
         Picasso.with(context)
                 .load(imageurl + topMovies
                         .get(position)
                         .getPosterPath())
                 .fit()
+
 
                 .into(holder.image);
 

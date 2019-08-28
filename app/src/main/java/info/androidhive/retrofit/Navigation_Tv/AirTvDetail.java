@@ -1,7 +1,6 @@
-package info.androidhive.retrofit;
+package info.androidhive.retrofit.Navigation_Tv;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -16,7 +15,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import info.androidhive.retrofit.Navigation_Tv.TopTvDetail;
+import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.model.Tv.Tv;
 import info.androidhive.retrofit.model.trailer.Trailer;
 import info.androidhive.retrofit.model.trailer.TrailerResponse;

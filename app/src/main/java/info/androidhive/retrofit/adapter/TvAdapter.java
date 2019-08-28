@@ -74,9 +74,11 @@ public class TvAdapter extends RecyclerView.Adapter <TvAdapter.ViewHolder> {
                 String image = productList.getPosterPath();
                 String name = productList.getName();
 
+
                 favoriteList.setId(id);
                 favoriteList.setImage(image);
                 favoriteList.setName(name);
+
 
                 if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(id) != 1) {
                     viewHolder.fav_btn.setImageResource(R.drawable.tikbookmark);

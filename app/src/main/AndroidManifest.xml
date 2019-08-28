@@ -36,7 +36,7 @@
         <activity android:name=".Navigation_Movie.UpMovieDetail" />
         <activity android:name=".Navigation_Tv.TopTvDetail" />
         <activity android:name=".Navigation_Tv.PopTvDetail" />
-        <activity android:name=".AirTvDetail"></activity>
+        <activity android:name=".Navigation_Tv.AirTvDetail"></activity>
     </application>
 
 </manifest>

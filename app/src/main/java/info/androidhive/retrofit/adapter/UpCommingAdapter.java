@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import info.androidhive.retrofit.R;
-import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.UpComming.UpComming;
 
 public class UpCommingAdapter extends RecyclerView.Adapter <UpCommingAdapter.UpViewHolder> {
@@ -29,7 +28,7 @@ public class UpCommingAdapter extends RecyclerView.Adapter <UpCommingAdapter.UpV
         RelativeLayout uplayout;
         TextView movieTitle;
         ImageView image;
-        TextView rating;
+        TextView data, rating;
 
 
         public UpViewHolder(View v) {
@@ -37,8 +36,8 @@ public class UpCommingAdapter extends RecyclerView.Adapter <UpCommingAdapter.UpV
             uplayout = v.findViewById(R.id.upcomming_layout);
             movieTitle = (TextView) v.findViewById(R.id.text_upcomming);
             image = v.findViewById(R.id.image_upcomming);
-            rating = (TextView) v.findViewById(R.id.txt_upcomming);
-
+            data = (TextView) v.findViewById(R.id.txt_upcomming);
+            rating = v.findViewById(R.id.rating_up_movie);
         }
     }
 
@@ -59,7 +58,8 @@ public class UpCommingAdapter extends RecyclerView.Adapter <UpCommingAdapter.UpV
     @Override
     public void onBindViewHolder(UpViewHolder holder, final int position) {
         holder.movieTitle.setText(upCommings.get(position).getTitle());
-        holder.rating.setText(upCommings.get(position).getReleaseDate());
+        holder.data.setText(upCommings.get(position).getReleaseDate());
+        holder.rating.setText(upCommings.get(position).getVoteAverage().toString());
 
         Picasso.with(context)
                 .load(imageurl + upCommings

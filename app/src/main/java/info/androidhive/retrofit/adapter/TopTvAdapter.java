@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import info.androidhive.retrofit.R;
-import info.androidhive.retrofit.model.Top_movie.TopMovie;
 import info.androidhive.retrofit.model.Tv.Tv;
 
 public class TopTvAdapter extends RecyclerView.Adapter <TopTvAdapter.TopViewHolder> {
@@ -29,7 +28,7 @@ public class TopTvAdapter extends RecyclerView.Adapter <TopTvAdapter.TopViewHold
         RelativeLayout toptvlayout;
         TextView tvTitle;
         ImageView image;
-        TextView rating;
+        TextView air , rating;
 
 
         public TopViewHolder(View v) {
@@ -37,7 +36,8 @@ public class TopTvAdapter extends RecyclerView.Adapter <TopTvAdapter.TopViewHold
             toptvlayout = v.findViewById(R.id.toptv_layout);
           tvTitle = (TextView) v.findViewById(R.id.text_toptv);
             image = v.findViewById(R.id.image_toptv);
-            rating = (TextView) v.findViewById(R.id.txt_toptv);
+            air = (TextView) v.findViewById(R.id.txt_toptv);
+            rating=v.findViewById(R.id.rating);
 
         }
     }
@@ -59,7 +59,8 @@ public class TopTvAdapter extends RecyclerView.Adapter <TopTvAdapter.TopViewHold
     @Override
     public void onBindViewHolder(TopViewHolder holder, final int position) {
         holder.tvTitle.setText(topTv.get(position).getName());
-        holder.rating.setText( topTv.get(position).getFirstAirDate());
+        holder.air.setText( topTv.get(position).getFirstAirDate());
+        holder.rating.setText(topTv.get(position).getVoteAverage().toString());
 
         Picasso.with(context)
                 .load(imageurl + topTv

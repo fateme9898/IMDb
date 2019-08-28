@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import info.androidhive.retrofit.R;
-import info.androidhive.retrofit.model.Pop_movie.PopMovie;
 import info.androidhive.retrofit.model.Tv.Tv;
 
 public class PopTvAdapter extends RecyclerView.Adapter <PopTvAdapter.PopViewHolder> {
@@ -29,7 +28,7 @@ public class PopTvAdapter extends RecyclerView.Adapter <PopTvAdapter.PopViewHold
         RelativeLayout poptvlayout;
         TextView tvTitle;
         ImageView image;
-        TextView rating;
+        TextView air , rating;
 
 
         public PopViewHolder(View v) {
@@ -37,7 +36,8 @@ public class PopTvAdapter extends RecyclerView.Adapter <PopTvAdapter.PopViewHold
             poptvlayout = v.findViewById(R.id.poptv_layout);
            tvTitle = (TextView) v.findViewById(R.id.text_poptv);
             image = v.findViewById(R.id.image_poptv);
-            rating = (TextView) v.findViewById(R.id.txt_poptv);
+            air = (TextView) v.findViewById(R.id.txt_poptv);
+            rating=v.findViewById(R.id.rating);
 
         }
     }
@@ -59,7 +59,8 @@ public class PopTvAdapter extends RecyclerView.Adapter <PopTvAdapter.PopViewHold
     @Override
     public void onBindViewHolder(PopViewHolder holder, final int position) {
         holder.tvTitle.setText(popTv.get(position).getName());
-        holder.rating.setText(popTv.get(position).getFirstAirDate());
+        holder.air.setText(popTv.get(position).getFirstAirDate());
+        holder.rating.setText(popTv.get(position).getVoteAverage().toString());
 
         Picasso.with(context)
                 .load(imageurl + popTv

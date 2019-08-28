@@ -15,16 +15,10 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import info.androidhive.retrofit.AirTvDetail;
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
 import info.androidhive.retrofit.adapter.AirTvAdapter;
-import info.androidhive.retrofit.adapter.PopMovieAdapter;
-import info.androidhive.retrofit.adapter.PopTvAdapter;
-import info.androidhive.retrofit.adapter.TopTvAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
-import info.androidhive.retrofit.model.Pop_movie.PopMovie;
-import info.androidhive.retrofit.model.Pop_movie.PopMovieResponse;
 import info.androidhive.retrofit.model.Tv.Tv;
 import info.androidhive.retrofit.model.Tv.TvResponse;
 import info.androidhive.retrofit.rest.ApiClient;

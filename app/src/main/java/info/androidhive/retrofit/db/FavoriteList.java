@@ -16,6 +16,9 @@ public class FavoriteList {
     @ColumnInfo(name = "prname")
     private String name;
 
+    @ColumnInfo(name = "rating")
+    private String rating;
+
     public int getId() {
         return id;
     }
@@ -38,5 +41,13 @@ public class FavoriteList {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String name) {
+        this.rating = name;
     }
 }

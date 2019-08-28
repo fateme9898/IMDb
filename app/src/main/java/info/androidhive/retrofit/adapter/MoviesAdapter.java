@@ -52,6 +52,7 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
                         .get(i)
 
                         .getPosterPath())
+                .fit()
                 .into(viewHolder.img)
         ;
 
@@ -73,9 +74,12 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
                 String image = productList.getPosterPath();
                 String name = productList.getTitle();
 
+
                 favoriteList.setId(id);
                 favoriteList.setImage(image);
                 favoriteList.setName(name);
+
+
 
                 if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(id) != 1) {
                     viewHolder.fav_btn.setImageResource(R.drawable.tikbookmark);

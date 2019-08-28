@@ -35,23 +35,23 @@ public class Saved extends AppCompatActivity {
         getFavData();
 
 
-//
-//        back=findViewById(R.id.back_saved);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(Saved.this , MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        search=findViewById(R.id.search_saved);
-//        search.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent =new Intent(Saved.this , Search.class);
-//                startActivity(intent);
-//            }
-//        });
+
+        back=findViewById(R.id.back_saved);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Saved.this , MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        search=findViewById(R.id.search_saved);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(Saved.this , Search.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
