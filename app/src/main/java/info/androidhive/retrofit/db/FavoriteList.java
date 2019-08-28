@@ -43,11 +43,13 @@ public class FavoriteList {
         this.name = name;
     }
 
+
+
     public String getRating() {
         return rating;
     }
 
-    public void setRating(String name) {
-        this.rating = name;
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 }

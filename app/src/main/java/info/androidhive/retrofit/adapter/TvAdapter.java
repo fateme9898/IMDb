@@ -73,11 +73,12 @@ public class TvAdapter extends RecyclerView.Adapter <TvAdapter.ViewHolder> {
                 int id = productList.getId();
                 String image = productList.getPosterPath();
                 String name = productList.getName();
-
+                String rating = productList.getVoteAverage().toString();
 
                 favoriteList.setId(id);
                 favoriteList.setImage(image);
                 favoriteList.setName(name);
+                favoriteList.setRating(rating);
 
 
                 if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(id) != 1) {

@@ -73,13 +73,13 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
                 int id = productList.getId();
                 String image = productList.getPosterPath();
                 String name = productList.getTitle();
+                String rating = productList.getVoteAverage().toString();
 
 
                 favoriteList.setId(id);
                 favoriteList.setImage(image);
                 favoriteList.setName(name);
-
-
+                favoriteList.setRating(rating);
 
                 if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(id) != 1) {
                     viewHolder.fav_btn.setImageResource(R.drawable.tikbookmark);

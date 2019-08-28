@@ -46,7 +46,7 @@ public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
     ;
         viewHolder.tv.setText(fl.getName());
-//        viewHolder.rating.setText(fl.getRating());
+      viewHolder.rating.setText(fl.getRating());
 
         }
 
@@ -62,7 +62,7 @@ public class ViewHolder extends RecyclerView.ViewHolder{
         super(itemView);
         img=(ImageView)itemView.findViewById(R.id.fimg_pr);
         tv=(TextView)itemView.findViewById(R.id.ftv_name);
-//        rating=itemView.findViewById(R.id.rating);
+        rating=itemView.findViewById(R.id.rating);
 //        data=itemView.findViewById(R.id.data);
     }
 }
