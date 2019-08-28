@@ -114,12 +114,12 @@ public class NavigationMovie extends AppCompatActivity  {
        navigationMovieTop= new NavigationMovieTop();
         navigationMoviePop=new NavigationMoviePop();
        navigationMovieUp=new NavigationMovieUp();
-       active=navigationMovieUp;
+       active=navigationMovieTop;
        fm=getSupportFragmentManager();
 
         fm.beginTransaction().add(R.id.frame_container, navigationMoviePop ).hide(navigationMoviePop).commit();
-        fm.beginTransaction().add(R.id.frame_container,navigationMovieTop).hide(navigationMovieTop).commit();
-        fm.beginTransaction().add(R.id.frame_container, navigationMovieUp).commit();
+        fm.beginTransaction().add(R.id.frame_container,navigationMovieUp).hide(navigationMovieUp).commit();
+        fm.beginTransaction().add(R.id.frame_container, navigationMovieTop).commit();
 
     }
 

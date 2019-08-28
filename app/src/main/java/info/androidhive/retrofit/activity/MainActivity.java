@@ -379,7 +379,7 @@ account.setOnClickListener(new View.OnClickListener() {
 
         tvAdapter = new TvAdapter(tvs ,R.layout.list_item_tv, this,this);
         recyclerView2.setAdapter(tvAdapter);
-//
+
 //        recyclerView2.addOnItemTouchListener(new ItemTouchListener(recyclerView2) {
 //            @Override
 //            public boolean onClick(RecyclerView parent, View view, int position, long id) {

@@ -21,7 +21,7 @@ import info.androidhive.retrofit.model.UpComming.UpComming;
 
 public class PopMovieAdapter extends RecyclerView.Adapter <PopMovieAdapter.PopViewHolder> {
 
-    public List <PopMovie> popMovies;
+    public static List <PopMovie> popMovies;
     private int rowLayout;
     private Context context;
     private String imageurl = "https://image.tmdb.org/t/p/original";

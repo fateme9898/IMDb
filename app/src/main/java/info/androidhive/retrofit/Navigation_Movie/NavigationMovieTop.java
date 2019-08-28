@@ -18,13 +18,9 @@ import java.util.List;
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
 import info.androidhive.retrofit.adapter.TopMovieAdapter;
-import info.androidhive.retrofit.adapter.UpCommingAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
-import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.Top_movie.TopMovie;
 import info.androidhive.retrofit.model.Top_movie.TopMovieResponse;
-import info.androidhive.retrofit.model.UpComming.UpComming;
-import info.androidhive.retrofit.model.UpComming.UpCommingResponse;
 import info.androidhive.retrofit.rest.ApiClient;
 import info.androidhive.retrofit.rest.ApiInterface;
 import retrofit2.Call;
@@ -109,6 +105,29 @@ public class NavigationMovieTop extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext().getApplicationContext(),
                 LinearLayoutManager.VERTICAL, false));
 
+
+        recyclerView.addOnItemTouchListener(new ItemTouchListener(recyclerView) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                TopMovieAdapter topMovieAdapter = (TopMovieAdapter) recyclerView.getAdapter();
+                TopMovie movie = TopMovieAdapter.topMovies.get(position);
+                Intent intent = new Intent(getActivity(), TopMovieDetail.class);
+
+                intent.putExtra("TYPE", movie.getId());
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
 
 
 

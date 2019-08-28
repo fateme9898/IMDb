@@ -1,6 +1,7 @@
 package info.androidhive.retrofit.Navigation_Movie;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import java.util.List;
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
 import info.androidhive.retrofit.adapter.UpCommingAdapter;
+import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.model.UpComming.UpComming;
 import info.androidhive.retrofit.model.UpComming.UpCommingResponse;
 import info.androidhive.retrofit.rest.ApiClient;
@@ -105,6 +107,30 @@ public class NavigationMovieUp extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext().getApplicationContext(),
                 LinearLayoutManager.VERTICAL, false));
+
+        recyclerView.addOnItemTouchListener(new ItemTouchListener(recyclerView) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                UpCommingAdapter upCommingAdapter = (UpCommingAdapter) recyclerView.getAdapter();
+                UpComming movie = upCommingAdapter.upCommings.get(position);
+                Intent intent = new Intent(getActivity(), UpMovieDetail.class);
+
+                intent.putExtra("TYPE", movie.getId());
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
+
 
         ApiInterface apiServic= ApiClient.getClient().create(ApiInterface.class);
        Call <UpCommingResponse> call=apiServic.getUpMovie(API_KEY);
