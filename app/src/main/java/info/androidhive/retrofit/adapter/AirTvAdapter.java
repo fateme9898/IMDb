@@ -19,7 +19,7 @@ import info.androidhive.retrofit.model.Tv.Tv;
 
 public class AirTvAdapter extends RecyclerView.Adapter <AirTvAdapter.TopViewHolder> {
 
-    public List <Tv> airTv;
+    public static List <Tv> airTv;
     private int rowLayout;
     private Context context;
     private String imageurl = "https://image.tmdb.org/t/p/original";

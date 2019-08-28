@@ -33,7 +33,10 @@
             android:label="@string/title_activity_navigation_tv" />
         <activity android:name=".Navigation_Movie.TopMovieDetail" />
         <activity android:name=".Navigation_Movie.PopMovieDetail" />
-        <activity android:name=".Navigation_Movie.UpMovieDetail"></activity>
+        <activity android:name=".Navigation_Movie.UpMovieDetail" />
+        <activity android:name=".Navigation_Tv.TopTvDetail" />
+        <activity android:name=".Navigation_Tv.PopTvDetail" />
+        <activity android:name=".AirTvDetail"></activity>
     </application>
 
 </manifest>

@@ -19,7 +19,7 @@ import info.androidhive.retrofit.model.Tv.Tv;
 
 public class TopTvAdapter extends RecyclerView.Adapter <TopTvAdapter.TopViewHolder> {
 
-    public List <Tv> topTv;
+    public static List <Tv> topTv;
     private int rowLayout;
     private Context context;
     private String imageurl = "https://image.tmdb.org/t/p/original";

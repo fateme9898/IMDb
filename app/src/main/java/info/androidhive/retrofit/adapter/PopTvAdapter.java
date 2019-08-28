@@ -19,7 +19,7 @@ import info.androidhive.retrofit.model.Tv.Tv;
 
 public class PopTvAdapter extends RecyclerView.Adapter <PopTvAdapter.PopViewHolder> {
 
-    public List <Tv> popTv;
+    public static List <Tv> popTv;
     private int rowLayout;
     private Context context;
     private String imageurl = "https://image.tmdb.org/t/p/original";

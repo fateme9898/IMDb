@@ -1,6 +1,7 @@
 package info.androidhive.retrofit.Navigation_Tv;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,8 @@ import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
 import info.androidhive.retrofit.adapter.AirTvAdapter;
 import info.androidhive.retrofit.adapter.PopTvAdapter;
+import info.androidhive.retrofit.adapter.TopTvAdapter;
+import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.model.Tv.Tv;
 import info.androidhive.retrofit.model.Tv.TvResponse;
 import info.androidhive.retrofit.rest.ApiClient;
@@ -100,6 +103,29 @@ public class NavigationTvPop extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext().getApplicationContext(),
                 LinearLayoutManager.VERTICAL, false));
+
+        recyclerView.addOnItemTouchListener(new ItemTouchListener(recyclerView) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                PopTvAdapter popTvAdapter = (PopTvAdapter) recyclerView.getAdapter();
+                Tv tv = PopTvAdapter.popTv.get(position);
+                Intent intent = new Intent(getActivity(), PopTvDetail.class);
+
+                intent.putExtra("TYPE", tv.getId());
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
 
         ApiInterface apiServic= ApiClient.getClient().create(ApiInterface.class);
         Call<TvResponse> call=apiServic.getPopTv(API_KEY);

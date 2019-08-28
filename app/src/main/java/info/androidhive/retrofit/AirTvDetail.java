@@ -1,9 +1,8 @@
-package info.androidhive.retrofit.activity;
+package info.androidhive.retrofit;
 
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,13 +16,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import info.androidhive.retrofit.R;
-import info.androidhive.retrofit.adapter.SimilarMovieAdapter;
-import info.androidhive.retrofit.adapter.SimilarTvAdapter;
-import info.androidhive.retrofit.model.Movie.Movie;
-import info.androidhive.retrofit.model.Movie.MoviesResponse;
+import info.androidhive.retrofit.Navigation_Tv.TopTvDetail;
 import info.androidhive.retrofit.model.Tv.Tv;
-import info.androidhive.retrofit.model.Tv.TvResponse;
 import info.androidhive.retrofit.model.trailer.Trailer;
 import info.androidhive.retrofit.model.trailer.TrailerResponse;
 import info.androidhive.retrofit.rest.ApiClient;
@@ -32,20 +26,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TvDetail extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
+public class AirTvDetail extends YouTubeBaseActivity implements  YouTubePlayer.OnInitializedListener {
+
 
     private final static String API_KEY = "53f93d98fdababca6efda85ba6ccc57a";
     private int querytrailer;
-    TextView text_info_tvdetail;
-    TextView title_info_tvdetail;
-    ImageView image_info_tvdetail;
+    TextView text_info_moviedetail;
+    TextView title_info_moviedetail;
+    ImageView image_info_moviedetail;
 
-    private static final String TAG = Search.class.getSimpleName();
+    private static final String TAG = AirTvDetail.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tv_detail);
+        setContentView(R.layout.activity_air_tv_detail);
+
+
+
 
 
         Intent getid = getIntent();
@@ -53,23 +51,17 @@ public class TvDetail extends YouTubeBaseActivity implements YouTubePlayer.OnIni
         querytrailer = bundle.getInt("TYPE");
 
 
-
         getQueryInformation();
-        image_info_tvdetail=findViewById(R.id.image_info_tvdetail);
-        text_info_tvdetail =findViewById(R.id.text_info_tvdetail);
-        title_info_tvdetail =findViewById(R.id.title_info_tvdetail);
-
-
+        image_info_moviedetail = findViewById(R.id.image_info_air);
+        text_info_moviedetail = findViewById(R.id.text_info_air);
+        title_info_moviedetail = findViewById(R.id.title_info_air);
 
         getQueryTrailer();
-        YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_tv);
+        YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_air_tv);
         youTubePlayerView.initialize(ApiClient.YOUTUBE_API_KEY , this);
-
-        getQueryInformationSimilar();
 
 
     }
-
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,10 +76,10 @@ public class TvDetail extends YouTubeBaseActivity implements YouTubePlayer.OnIni
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
-        Call<Tv> call=apiService.getTvDetail(querytrailer);
-        call.enqueue(new Callback <Tv>() {
+        Call<Tv> call = apiService.getTvDetail(querytrailer);
+        call.enqueue(new Callback<Tv>() {
             @Override
-            public void onResponse(Call <Tv> call, Response <Tv> response) {
+            public void onResponse(Call <Tv> call, Response<Tv> response) {
 
                 int statusCode = response.code();
                 Tv tv = response.body();
@@ -102,13 +94,15 @@ public class TvDetail extends YouTubeBaseActivity implements YouTubePlayer.OnIni
         });
 
     }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    public  void bindView(Tv tv ){
-        text_info_tvdetail.setText(tv.getOverview());
-        title_info_tvdetail.setText(tv.getName());
-        Picasso.with(getBaseContext()).load("https://image.tmdb.org/t/p/original"+tv.getPosterPath()).into(image_info_tvdetail);
+    public void bindView(Tv tv){
+        text_info_moviedetail.setText(tv.getOverview());
+        title_info_moviedetail.setText(tv.getName());
+        Picasso.with(getBaseContext()).load("https://image.tmdb.org/t/p/original" + tv.getPosterPath()).into(image_info_moviedetail);
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void getQueryTrailer() {
 
@@ -175,43 +169,4 @@ public class TvDetail extends YouTubeBaseActivity implements YouTubePlayer.OnIni
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
 
     }
-/////////////////////////////////////////////////////////////////////////////////////////////////
-    public void getQueryInformationSimilar() {
-
-        if (API_KEY.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please obtain your API KEY from themoviedb.org first!", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        final RecyclerView recyclerView3 = (RecyclerView) findViewById(R.id.similar_tv_recycler);
-        recyclerView3.setLayoutManager(new LinearLayoutManager(this));
-
-        recyclerView3.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
-                LinearLayoutManager.HORIZONTAL, false));
-
-
-        ApiInterface apiService =
-                ApiClient.getClient().create(ApiInterface.class);
-        Call <TvResponse> call3 = apiService.getSimilarTv(querytrailer);
-
-        call3.enqueue(new Callback <TvResponse>() {
-
-            @Override
-            public void onResponse(Call <TvResponse> call, Response <TvResponse> response) {
-                int statusCode = response.code();
-                List <Tv> tv = response.body().getResults();
-                recyclerView3.setAdapter(new SimilarTvAdapter(tv, R.layout.list_item_similar_tv,
-                        getApplicationContext()));
-
-
-            }
-
-            @Override
-            public void onFailure(Call <TvResponse> call, Throwable t) {
-                Log.e(TAG, t.toString());
-            }
-
-        });
-    }
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////
