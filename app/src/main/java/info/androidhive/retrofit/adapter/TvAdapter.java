@@ -22,6 +22,7 @@ import info.androidhive.retrofit.activity.MainActivity;
 import info.androidhive.retrofit.db.FavoriteList;
 import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.Tv.Tv;
+import jp.wasabeef.picasso.transformations.BlurTransformation;
 
 public class TvAdapter extends RecyclerView.Adapter <TvAdapter.ViewHolder> {
     public List <Tv> product_lists;
@@ -48,11 +49,9 @@ public class TvAdapter extends RecyclerView.Adapter <TvAdapter.ViewHolder> {
 
 
         Picasso.with(ct)
-                .load("https://image.tmdb.org/t/p/original" + product_lists
+                .load("https://image.tmdb.org/t/p/original" + product_lists.get(i).getPosterPath())
+//               .transform(new BlurTransformation(viewHolder.img.getContext(),25,5))
 
-                        .get(i)
-
-                        .getPosterPath())
                 .into(viewHolder.img)
         ;
 

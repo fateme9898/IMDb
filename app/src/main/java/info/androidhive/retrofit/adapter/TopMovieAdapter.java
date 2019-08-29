@@ -20,6 +20,7 @@ import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.Top_movie.TopMovie;
 import info.androidhive.retrofit.model.UpComming.UpComming;
+import jp.wasabeef.picasso.transformations.BlurTransformation;
 
 public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopViewHolder> {
 
@@ -33,8 +34,8 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
     public static class TopViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout topmovielayout;
         TextView movieTitle;
-        ImageView image;
-        TextView data;
+        ImageView image , image_topmovie2 ;
+        TextView data ,lan_topmovie;
         TextView rating;
 
 
@@ -43,7 +44,9 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
             topmovielayout = v.findViewById(R.id.topmovie_layout);
             movieTitle = (TextView) v.findViewById(R.id.text_topmovie);
             image = v.findViewById(R.id.image_topmovie);
+            image_topmovie2=v.findViewById(R.id.image_topmovie2);
             data = (TextView) v.findViewById(R.id.txt_topmovie);
+            lan_topmovie=v.findViewById(R.id.lan_topmovie);
            rating=v.findViewById(R.id.rating);
 
         }
@@ -67,7 +70,21 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
     public void onBindViewHolder(TopViewHolder holder, final int position) {
         holder.movieTitle.setText(topMovies.get(position).getTitle());
         holder.data.setText(topMovies.get(position).getReleaseDate());
-      holder.rating.setText(topMovies.get(position).getVoteAverage().toString());
+       holder.rating.setText(topMovies.get(position).getVoteAverage().toString());
+
+        holder.lan_topmovie.setText(topMovies.get(position).getOriginalLanguage());
+
+        Picasso.with(context)
+                .load(imageurl + topMovies
+
+                        .get(position)
+                        .getBackdropPath())
+                .transform(new BlurTransformation(holder.image.getContext(),25,1))
+                .fit()
+
+
+                .into(holder.image);
+
 
         Picasso.with(context)
                 .load(imageurl + topMovies
@@ -76,7 +93,9 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
                 .fit()
 
 
-                .into(holder.image);
+                .into(holder.image_topmovie2);
+
+
 
 
     }
