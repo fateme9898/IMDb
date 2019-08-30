@@ -18,7 +18,7 @@ import info.androidhive.retrofit.model.Movie.Movie;
 
 public class SimilarMovieAdapter extends RecyclerView.Adapter <SimilarMovieAdapter.MovieViewHolder> {
 
-    public List <Movie> movies;
+    public static List <Movie> movies;
     private int rowLayout;
     private Context context;
     private String imageurl = "https://image.tmdb.org/t/p/original";

@@ -59,9 +59,9 @@ public class TvAdapter extends RecyclerView.Adapter <TvAdapter.ViewHolder> {
         viewHolder.tv.setText(productList.getName());
        viewHolder.rating.setText(productList.getVoteAverage().toString());
         if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(productList.getId()) == 1)
-            viewHolder.fav_btn.setImageResource(R.drawable.tikbookmark);
+            viewHolder.fav_btn.setImageResource(R.mipmap.tikbookmark);
         else
-            viewHolder.fav_btn.setImageResource(R.drawable.addbookmark);
+            viewHolder.fav_btn.setImageResource(R.mipmap.addbookmark);
 
 
         viewHolder.fav_btn.setOnClickListener(new View.OnClickListener() {
@@ -81,11 +81,11 @@ public class TvAdapter extends RecyclerView.Adapter <TvAdapter.ViewHolder> {
 
 
                 if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(id) != 1) {
-                    viewHolder.fav_btn.setImageResource(R.drawable.tikbookmark);
+                    viewHolder.fav_btn.setImageResource(R.mipmap.tikbookmark);
                     MainActivity.favoriteDatabase.favoriteDao().addData(favoriteList);
 
                 } else {
-                    viewHolder.fav_btn.setImageResource(R.drawable.addbookmark);
+                    viewHolder.fav_btn.setImageResource(R.mipmap.addbookmark);
                     MainActivity.favoriteDatabase.favoriteDao().delete(favoriteList);
 
                 }

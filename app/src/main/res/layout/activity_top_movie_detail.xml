@@ -88,7 +88,46 @@
 
 
 
+
+
+
+            <RelativeLayout
+                android:id="@+id/relate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_info_movietop"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/moviecredit"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp">
+
+                <TextView
+                    android:id="@+id/similar_movie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="Similar Movie"
+                    android:textColor="@color/orange"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    />
+
+            </RelativeLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/similar_movie_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@+id/relate"
+                android:layout_marginTop="5dp"
+
+                />
+
+
+
         </RelativeLayout>
+
+
     </android.support.v4.widget.NestedScrollView>
 
 </RelativeLayout>

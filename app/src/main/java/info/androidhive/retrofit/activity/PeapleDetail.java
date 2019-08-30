@@ -15,10 +15,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import info.androidhive.retrofit.Navigation_Movie.TopMovieDetail;
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.adapter.CreditAdapter;
+import info.androidhive.retrofit.adapter.SimilarMovieAdapter;
+import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.model.Credit_people.Cast;
 import info.androidhive.retrofit.model.Credit_people.Example;
+import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.people.KnownFor;
 import info.androidhive.retrofit.model.people.Peaple;
 import info.androidhive.retrofit.model.people.PeopleDetailModel;
@@ -63,7 +67,7 @@ public class PeapleDetail extends AppCompatActivity {
         getQueryInformationCrew();
 
 
-        ImageView back=findViewById(R.id.back);
+        ImageView back=findViewById(R.id.back2);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,24 +77,24 @@ public class PeapleDetail extends AppCompatActivity {
             }
         });
 
-
-        ImageView user = findViewById(R.id.user);
-        user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PeapleDetail.this, Saved.class);
-                startActivity(intent);
-            }
-        });
-
-        ImageView search = findViewById(R.id.search);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PeapleDetail.this, Search.class);
-                startActivity(intent);
-            }
-        });
+//
+//        ImageView user = findViewById(R.id.user);
+//        user.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(PeapleDetail.this, Saved.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        ImageView search = findViewById(R.id.search);
+//        search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(PeapleDetail.this, Search.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
 
@@ -224,6 +228,29 @@ place_info_peopledetail.setText(movie.getPlaceOfBirth());
         recyclerView3.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false));
 
+
+        recyclerView3.addOnItemTouchListener(new ItemTouchListener(recyclerView3) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                CreditAdapter creditAdapter = (CreditAdapter) recyclerView3.getAdapter();
+                Cast creditAdapter1 = CreditAdapter.movies.get(position);
+                Intent intent = new Intent(PeapleDetail.this, TopMovieDetail.class);
+
+                intent.putExtra("TYPE", creditAdapter1.getId());
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
 
 
         ApiInterface apiService =

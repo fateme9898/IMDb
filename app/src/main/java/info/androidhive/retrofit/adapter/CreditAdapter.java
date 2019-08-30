@@ -22,7 +22,7 @@ import info.androidhive.retrofit.model.Movie.Movie;
 
 public class CreditAdapter extends RecyclerView.Adapter <CreditAdapter.CreditViewHolder> {
 
-    public List <Cast> movies;
+    public static List <Cast> movies;
     private int rowLayout;
     private Context context;
     private String imageurl = "https://image.tmdb.org/t/p/original";

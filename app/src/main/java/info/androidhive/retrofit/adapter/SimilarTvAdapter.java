@@ -19,7 +19,7 @@ import info.androidhive.retrofit.model.Tv.Tv;
 
 public class SimilarTvAdapter extends RecyclerView.Adapter <SimilarTvAdapter.MovieViewHolder> {
 
-    public List <Tv> tvs;
+    public static List <Tv> tvs;
     private int rowLayout;
     private Context context;
     private String imageurl = "https://image.tmdb.org/t/p/original";

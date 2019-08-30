@@ -4,25 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black">
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/Apap"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@color/black"
-        android:layout_alignParentLeft="true">
+        android:background="@color/black">
 
 
+        <RelativeLayout
+            android:id="@+id/toolbarr"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
 
-
-    <RelativeLayout
-        android:id="@+id/toolbarr"
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
-        <include layout="@layout/toolbar" />
-    </RelativeLayout>
-
+            <include layout="@layout/toolbar" />
+        </RelativeLayout>
 
 
     </android.support.design.widget.AppBarLayout>
@@ -39,10 +38,7 @@
             android:id="@+id/lin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-
-
+            android:orientation="vertical">
 
 
             <RelativeLayout
@@ -51,7 +47,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="60dp">
 
                 <TextView
 
@@ -63,8 +59,7 @@
                     android:text="TRAILER"
                     android:textColor="@color/colorWhite"
                     android:textSize="25dp"
-                    android:textStyle="bold"
-                 />
+                    android:textStyle="bold" />
 
 
                 <android.support.v7.widget.RecyclerView
@@ -72,8 +67,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="280dp"
 
-                    android:scrollbars="vertical"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    android:scrollbars="vertical" />
 
             </RelativeLayout>
 
@@ -81,37 +76,39 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="330dp"
-                android:layout_alignParentTop="true"
-    >
+                android:layout_alignParentTop="true">
 
                 <TextView
 
-                    android:layout_width="129dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/movies_recycler_view"
                     android:layout_alignParentStart="true"
+                    android:layout_marginBottom="7dp"
                     android:layout_marginStart="15dp"
-                    android:text="MOVIE"
+                    android:text="Now Playing Movie"
                     android:textColor="@color/colorWhite"
                     android:textSize="25dp"
                     android:textStyle="bold" />
+
                 <RelativeLayout
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_above="@id/movies_recycler_view"
-                    android:layout_alignParentRight="true">
-
-                <TextView
-                    android:id="@+id/see_movie"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="8dp"
-                    android:text="SEE ALL"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="15dp"
-                    android:textStyle="bold"/>
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/see_movie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="8dp"
+                        android:text="SEE ALL"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
                 </RelativeLayout>
 
                 <android.support.v7.widget.RecyclerView
@@ -120,7 +117,7 @@
                     android:layout_height="269dp"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="20dp"
                     android:scrollbars="vertical" />
 
             </RelativeLayout>
@@ -128,38 +125,39 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="330dp"
-                android:layout_alignParentTop="true"
-       >
+                android:layout_alignParentTop="true">
 
                 <TextView
-                    android:layout_width="129dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/movies_recycler_view2"
                     android:layout_alignParentStart="true"
+                    android:layout_marginBottom="7dp"
                     android:layout_marginStart="15dp"
-                    android:text="TV"
+                    android:text="TopRated Tv"
                     android:textColor="@color/colorWhite"
                     android:textSize="25dp"
                     android:textStyle="bold" />
+
                 <RelativeLayout
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_above="@id/movies_recycler_view2"
-                    android:layout_alignParentRight="true">
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="5dp">
 
                     <TextView
                         android:id="@+id/see_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
                         android:layout_marginRight="8dp"
                         android:text="SEE ALL"
                         android:textColor="@color/colorPrimary"
                         android:textSize="15dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
                 </RelativeLayout>
-
 
 
                 <android.support.v7.widget.RecyclerView
@@ -168,7 +166,7 @@
                     android:layout_height="269dp"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginBottom="25dp"
+                    android:layout_marginBottom="20dp"
                     android:scrollbars="vertical" />
 
             </RelativeLayout>
@@ -176,22 +174,24 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="301dp"
+                android:layout_height="320dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginBottom="10dp">
 
-                <TextView
 
-                    android:layout_width="129dp"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/movies_recycler_view3"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="13dp"
-                    android:text="People"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/movies_recycler_view3"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginStart="15dp"
+                        android:text="popular"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
 
 
                 <android.support.v7.widget.RecyclerView
@@ -200,8 +200,8 @@
                     android:layout_height="269dp"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
-                    android:scrollbars="vertical"
-                    tools:ignore="RtlCompat" />
+                    android:layout_marginBottom="12dp"
+                    android:scrollbars="vertical" />
 
 
             </RelativeLayout>

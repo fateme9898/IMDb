@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,13 +18,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import info.androidhive.retrofit.Navigation_Movie.TopMovieDetail;
 import info.androidhive.retrofit.R;
-import info.androidhive.retrofit.adapter.PeapleAdapter;
 import info.androidhive.retrofit.adapter.SimilarMovieAdapter;
+import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.Movie.MoviesResponse;
-import info.androidhive.retrofit.model.people.Peaple;
-import info.androidhive.retrofit.model.people.PeapleResponse;
 import info.androidhive.retrofit.model.trailer.Trailer;
 import info.androidhive.retrofit.model.trailer.TrailerResponse;
 import info.androidhive.retrofit.rest.ApiClient;
@@ -186,6 +186,29 @@ public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.On
 
         recyclerView3.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false));
+
+        recyclerView3.addOnItemTouchListener(new ItemTouchListener(recyclerView3) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                SimilarMovieAdapter similarMovieAdapter = (SimilarMovieAdapter) recyclerView3.getAdapter();
+                Movie movie = SimilarMovieAdapter.movies.get(position);
+                Intent intent = new Intent(MovieDetail.this, TopMovieDetail.class);
+
+                intent.putExtra("TYPE", movie.getId());
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
 
 
         ApiInterface apiService =
