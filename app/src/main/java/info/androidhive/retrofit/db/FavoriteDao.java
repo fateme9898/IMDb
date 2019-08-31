@@ -18,6 +18,7 @@ public interface FavoriteDao {
     public List<FavoriteList> getFavoriteData();
 
     @Query("SELECT EXISTS (SELECT 1 FROM favoritelist WHERE id=:id)")
+
     public int isFavorite(int id);
 
     @Delete

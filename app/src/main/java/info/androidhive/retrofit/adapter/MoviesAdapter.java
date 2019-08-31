@@ -84,11 +84,12 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
                 if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(id) != 1) {
                     viewHolder.fav_btn.setImageResource(R.mipmap.tikbookmark);
                     MainActivity.favoriteDatabase.favoriteDao().addData(favoriteList);
+                    v.setAlpha(1);
 
                 } else  {
                     viewHolder.fav_btn.setImageResource(R.mipmap.addbookmark);
                     MainActivity.favoriteDatabase.favoriteDao().delete(favoriteList);
-
+     v.setAlpha(.5f);
                 }
 
 

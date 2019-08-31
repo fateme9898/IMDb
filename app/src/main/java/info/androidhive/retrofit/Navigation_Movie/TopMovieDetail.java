@@ -193,28 +193,28 @@ public class TopMovieDetail  extends YouTubeBaseActivity implements YouTubePlaye
         recyclerView3.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false));
 //
-//        recyclerView3.addOnItemTouchListener(new ItemTouchListener(recyclerView3) {
-//            @Override
-//            public boolean onClick(RecyclerView parent, View view, int position, long id) {
-//                SimilarMovieAdapter similarMovieAdapter = (SimilarMovieAdapter) recyclerView3.getAdapter();
-//                Movie movie = SimilarMovieAdapter.movies.get(position);
-//                Intent intent = new Intent(TopMovieDetail.this, MovieDetail.class);
-//
-//                intent.putExtra("TYPE", movie.getId());
-//                startActivity(intent);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
-//                return false;
-//            }
-//
-//            @Override
-//            public void onRequestDisallowInterceptTouchEvent(boolean b) {
-//
-//            }
-//        });
+        recyclerView3.addOnItemTouchListener(new ItemTouchListener(recyclerView3) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                SimilarMovieAdapter similarMovieAdapter = (SimilarMovieAdapter) recyclerView3.getAdapter();
+                Movie movie = SimilarMovieAdapter.movies.get(position);
+                Intent intent = new Intent(TopMovieDetail.this, MovieDetail.class);
+
+                intent.putExtra("TYPE", movie.getId());
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
 
 
         ApiInterface apiService =

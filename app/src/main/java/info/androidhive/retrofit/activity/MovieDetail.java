@@ -50,7 +50,7 @@ public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.On
 
         Intent getid = getIntent();
         Bundle bundle = getid.getExtras();
-        querytrailer = bundle.getInt("city");
+        querytrailer = bundle.getInt("TYPE");
 
 
         getQueryInformation();
@@ -192,7 +192,7 @@ public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.On
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 SimilarMovieAdapter similarMovieAdapter = (SimilarMovieAdapter) recyclerView3.getAdapter();
                 Movie movie = SimilarMovieAdapter.movies.get(position);
-                Intent intent = new Intent(MovieDetail.this, TopMovieDetail.class);
+                Intent intent = new Intent(MovieDetail.this, MovieDetail.class);
 
                 intent.putExtra("TYPE", movie.getId());
                 startActivity(intent);

@@ -1,6 +1,7 @@
 package info.androidhive.retrofit.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.model.UpComming.UpComming;
+import jp.wasabeef.picasso.transformations.BlurTransformation;
 
 public class UpCommingAdapter extends RecyclerView.Adapter <UpCommingAdapter.UpViewHolder> {
 
@@ -27,17 +29,19 @@ public class UpCommingAdapter extends RecyclerView.Adapter <UpCommingAdapter.UpV
     public static class UpViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout uplayout;
         TextView movieTitle;
-        ImageView image;
+        ImageView image ,image2;
         TextView data, rating;
 
 
         public UpViewHolder(View v) {
             super(v);
             uplayout = v.findViewById(R.id.upcomming_layout);
-            movieTitle = (TextView) v.findViewById(R.id.text_upcomming);
-            image = v.findViewById(R.id.image_upcomming);
-            data = (TextView) v.findViewById(R.id.txt_upcomming);
-            rating = v.findViewById(R.id.rating_up_movie);
+            movieTitle = (TextView) v.findViewById(R.id.text_upmovie);
+            image2 = v.findViewById(R.id.image_upmovie2);
+            image=v.findViewById(R.id.image_upmovie);
+            image.setColorFilter(Color.argb(150,0,0,0));
+            data = (TextView) v.findViewById(R.id.txt_upmovie);
+            rating = v.findViewById(R.id.rating);
         }
     }
 
@@ -66,6 +70,17 @@ public class UpCommingAdapter extends RecyclerView.Adapter <UpCommingAdapter.UpV
                         .get(position)
                         .getPosterPath())
                 .fit()
+
+                .into(holder.image2);
+
+        Picasso.with(context)
+                .load(imageurl + upCommings
+
+                        .get(position)
+                        .getBackdropPath())
+                .transform(new BlurTransformation(holder.image.getContext(),25,1))
+                .fit()
+
 
                 .into(holder.image);
 

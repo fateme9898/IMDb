@@ -23,10 +23,20 @@
     </style>
 
     <style name="RatingBar" parent="Theme.AppCompat">
-        <item name="colorControlNormal">@color/colorGreyLight</item>
-        <item name="colorControlActivated">@color/orange</item>
+        <item name="colorControlNormal">@color/colorGreyLight2</item>
+        <item name="colorControlActivated">@color/yellow</item>
     </style>
 
 
+
+    <style name="fav" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:alpha">0.5</item>
+
+
+    </style>
+    <style name="fav.Active" parent="@style/TextAppearance.AppCompat.Caption">
+
+
+    </style>
 
 </resources>

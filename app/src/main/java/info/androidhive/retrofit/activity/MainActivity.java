@@ -503,7 +503,7 @@ account.setOnClickListener(new View.OnClickListener() {
         Intent i = new Intent(this, MovieDetail.class);
 
 
-        i.putExtra("city", movie.getId());
+        i.putExtra("TYPE", movie.getId());
         startActivity(i);
 
     }

@@ -1,6 +1,7 @@
 package info.androidhive.retrofit.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +36,7 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
         RelativeLayout topmovielayout;
         TextView movieTitle;
         ImageView image , image_topmovie2 ;
-        TextView data ,lan_topmovie;
+        TextView data;
         TextView rating;
 
 
@@ -44,9 +45,10 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
             topmovielayout = v.findViewById(R.id.topmovie_layout);
             movieTitle = (TextView) v.findViewById(R.id.text_topmovie);
             image = v.findViewById(R.id.image_topmovie);
+            image.setColorFilter(Color.argb(150,0,0,0));
             image_topmovie2=v.findViewById(R.id.image_topmovie2);
             data = (TextView) v.findViewById(R.id.txt_topmovie);
-            lan_topmovie=v.findViewById(R.id.lan_topmovie);
+
            rating=v.findViewById(R.id.rating);
 
         }
@@ -72,7 +74,6 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
         holder.data.setText(topMovies.get(position).getReleaseDate());
        holder.rating.setText(topMovies.get(position).getVoteAverage().toString());
 
-        holder.lan_topmovie.setText(topMovies.get(position).getOriginalLanguage());
 
         Picasso.with(context)
                 .load(imageurl + topMovies

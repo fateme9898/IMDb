@@ -1,6 +1,7 @@
 package info.androidhive.retrofit.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.model.Pop_movie.PopMovie;
+import jp.wasabeef.picasso.transformations.BlurTransformation;
 
 public class PopMovieAdapter extends RecyclerView.Adapter <PopMovieAdapter.PopViewHolder> {
 
@@ -27,7 +29,7 @@ public class PopMovieAdapter extends RecyclerView.Adapter <PopMovieAdapter.PopVi
     public static class PopViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout popmovielayout;
         TextView movieTitle;
-        ImageView image;
+        ImageView image , image2;
         TextView data , rating;
 
 
@@ -36,8 +38,10 @@ public class PopMovieAdapter extends RecyclerView.Adapter <PopMovieAdapter.PopVi
             popmovielayout = v.findViewById(R.id.popmovie_layout);
             movieTitle = (TextView) v.findViewById(R.id.text_popmovie);
             image = v.findViewById(R.id.image_popmovie);
+            image2=v.findViewById(R.id.image_popmovie2);
+            image.setColorFilter(Color.argb(150,0,0,0));
             data = (TextView) v.findViewById(R.id.txt_popmovie);
-            rating=v.findViewById(R.id.rating_pop_movie);
+            rating=v.findViewById(R.id.rating);
 
         }
     }
@@ -68,7 +72,19 @@ public class PopMovieAdapter extends RecyclerView.Adapter <PopMovieAdapter.PopVi
                         .getPosterPath())
                 .fit()
 
+                .into(holder.image2);
+
+        Picasso.with(context)
+                .load(imageurl + popMovies
+
+                        .get(position)
+                        .getBackdropPath())
+                .transform(new BlurTransformation(holder.image.getContext(),25,1))
+                .fit()
+
+
                 .into(holder.image);
+
 
 
     }
