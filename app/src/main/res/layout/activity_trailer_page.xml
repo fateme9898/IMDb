@@ -48,30 +48,72 @@
         android:layout_width="123dp"
         android:layout_height="180dp"
         android:layout_below="@id/information"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/shape"
         android:paddingBottom="2dp"
-        android:paddingTop="2dp" />
+        android:paddingTop="2dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"/>
 
-    <TextView
-        android:id="@+id/text_info_trailerpage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/information"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="68dp"
-        android:textColor="@color/colorGreyLight" />
+
 
     <TextView
         android:id="@+id/title_info_trailerpage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/information"
-        android:layout_marginLeft="140dp"
+android:layout_toRightOf="@id/image_info_trailerpage"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
         android:textColor="@color/colorWhite"
         android:textStyle="bold" />
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_info_trailerpage"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/image_info_trailerpage"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/colorWhite"/>
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/data"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/image_info_trailerpage"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/colorWhite"/>
+
+    <RatingBar
+        android:id="@+id/ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/data"
+        android:layout_toRightOf="@id/rating"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="3dp"
+        android:scaleX=".4"
+        android:rating="3.5"
+        android:scaleY=".4"
+        android:transformPivotX="0dp"
+        android:transformPivotY="0dp"
+        android:theme="@style/RatingBar"
+        android:numStars="5"
 
 
+        />
+
+    <TextView
+        android:id="@+id/text_info_trailerpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rating"
+        android:layout_toRightOf="@id/image_info_trailerpage"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/colorGreyLight"
+        android:paddingRight="8dp"/>
 </RelativeLayout>

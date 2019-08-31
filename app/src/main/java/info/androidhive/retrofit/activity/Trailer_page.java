@@ -30,7 +30,7 @@ public class Trailer_page extends YouTubeBaseActivity implements YouTubePlayer.O
     private final static String API_KEY = "53f93d98fdababca6efda85ba6ccc57a";
     private int querytrailer;
     TextView text_info_trailerpage;
-    TextView title_info_trailerpage;
+    TextView title_info_trailerpage , data , rating;
     ImageView image_info_trailerpage;
 
     private static final String TAG = Search.class.getSimpleName();
@@ -51,6 +51,8 @@ public class Trailer_page extends YouTubeBaseActivity implements YouTubePlayer.O
        image_info_trailerpage=findViewById(R.id.image_info_trailerpage);
         text_info_trailerpage  =findViewById(R.id.text_info_trailerpage);
         title_info_trailerpage  =findViewById(R.id.title_info_trailerpage);
+        data=findViewById(R.id.data);
+        rating=findViewById(R.id.rating);
 
 
 
@@ -127,6 +129,8 @@ public class Trailer_page extends YouTubeBaseActivity implements YouTubePlayer.O
     public  void bindView(NowPlaying nowPlaying){
         text_info_trailerpage.setText(nowPlaying.getOverview());
         title_info_trailerpage.setText(nowPlaying.getTitle());
+        data.setText(nowPlaying.getReleaseDate());
+        rating.setText(nowPlaying.getVoteAverage().toString());
         Picasso.with(getBaseContext()).load("https://image.tmdb.org/t/p/original"+ nowPlaying.getPosterPath()).into(image_info_trailerpage);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////

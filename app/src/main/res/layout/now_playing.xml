@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/trailer_layout"
     android:layout_width="match_parent"
@@ -9,7 +10,7 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="240dp">
+        android:layout_height="250dp">
 
 
         <RelativeLayout
@@ -25,24 +26,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />
 
-            <RelativeLayout
-                android:layout_width="80dp"
-                android:layout_height="71dp"
-
-                android:layout_alignParentTop="true"
-                android:layout_alignStart="@+id/text_trailer"
-                android:layout_marginTop="66dp"
-                android:layout_alignLeft="@+id/text_trailer">
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@mipmap/play"
 
-          android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
              />
-
-            </RelativeLayout>
 
 
             <ImageView
@@ -66,17 +58,31 @@
 
             <TextView
                 android:id="@+id/text_trailer"
-                android:layout_width="202dp"
-                android:layout_height="39dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="38dp"
-                android:layout_marginRight="38dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textColor="@color/colorWhite"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="143dp"
-                tools:layout_editor_absoluteY="200dp" />
+                android:layout_toRightOf="@id/image_trailer"
+                android:layout_below="@id/back_image_trailer"
+                android:layout_marginLeft="10dp"
+        />
+            <TextView
+                android:id="@id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_trailer"
+                android:layout_toRightOf="@id/image_trailer"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="15dp"/>
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                app:srcCompat="@mipmap/star"
+                android:layout_toRightOf="@id/rating"
+                android:layout_below="@id/text_trailer"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="4dp"/>
 
         </RelativeLayout>
 

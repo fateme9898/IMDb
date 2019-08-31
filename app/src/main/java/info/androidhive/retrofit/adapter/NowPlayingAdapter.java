@@ -25,7 +25,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Tr
 
     public static class TrailerViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout trailerLayout;
-        TextView trailerTitle;
+        TextView trailerTitle , rating;
         ImageView trailerimage;
         ImageView trailerimage2;
 
@@ -38,6 +38,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Tr
             trailerTitle = (TextView) v.findViewById(R.id.text_trailer);
             trailerimage=v.findViewById(R.id.image_trailer);
             trailerimage2=v.findViewById(R.id.back_image_trailer);
+            rating=v.findViewById(R.id.rating);
 
 
         }
@@ -60,6 +61,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Tr
     @Override
     public void onBindViewHolder(TrailerViewHolder holder, final int position) {
         holder.trailerTitle.setText(trailer.get(position).getTitle());
+        holder.rating.setText(trailer.get(position).getVoteAverage().toString());
 
 
         Picasso.with(context)
