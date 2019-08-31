@@ -1,6 +1,7 @@
 package info.androidhive.retrofit.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.model.Tv.Tv;
+import jp.wasabeef.picasso.transformations.BlurTransformation;
 
 public class TopTvAdapter extends RecyclerView.Adapter <TopTvAdapter.TopViewHolder> {
 
@@ -27,7 +29,7 @@ public class TopTvAdapter extends RecyclerView.Adapter <TopTvAdapter.TopViewHold
     public static class TopViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout toptvlayout;
         TextView tvTitle;
-        ImageView image;
+        ImageView image2 , image;
         TextView air , rating;
 
 
@@ -35,7 +37,9 @@ public class TopTvAdapter extends RecyclerView.Adapter <TopTvAdapter.TopViewHold
             super(v);
             toptvlayout = v.findViewById(R.id.toptv_layout);
           tvTitle = (TextView) v.findViewById(R.id.text_toptv);
-            image = v.findViewById(R.id.image_toptv);
+            image2= v.findViewById(R.id.image_toptv2);
+            image=v.findViewById(R.id.image_toptv);
+            image.setColorFilter(Color.argb(150,0,0,0));
             air = (TextView) v.findViewById(R.id.txt_toptv);
             rating=v.findViewById(R.id.rating);
 
@@ -68,7 +72,19 @@ public class TopTvAdapter extends RecyclerView.Adapter <TopTvAdapter.TopViewHold
                         .getPosterPath())
                 .fit()
 
+                .into(holder.image2);
+
+        Picasso.with(context)
+                .load(imageurl + topTv
+
+                        .get(position)
+                        .getBackdropPath())
+                .transform(new BlurTransformation(holder.image.getContext(),25,1))
+                .fit()
+
+
                 .into(holder.image);
+
 
 
     }

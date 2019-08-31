@@ -198,7 +198,7 @@ public class TvDetail extends YouTubeBaseActivity implements YouTubePlayer.OnIni
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 SimilarTvAdapter similarTvAdapter = (SimilarTvAdapter) recyclerView3.getAdapter();
                 Tv tv = SimilarTvAdapter.tvs.get(position);
-                Intent intent = new Intent(TvDetail.this, TopTvDetail.class);
+                Intent intent = new Intent(TvDetail.this, TvDetail.class);
 
                 intent.putExtra("TYPE", tv.getId());
                 startActivity(intent);

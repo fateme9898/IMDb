@@ -1,6 +1,7 @@
 package info.androidhive.retrofit.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.model.Tv.Tv;
+import jp.wasabeef.picasso.transformations.BlurTransformation;
 
 public class AirTvAdapter extends RecyclerView.Adapter <AirTvAdapter.TopViewHolder> {
 
@@ -27,7 +29,7 @@ public class AirTvAdapter extends RecyclerView.Adapter <AirTvAdapter.TopViewHold
     public static class TopViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout airlayout;
         TextView tvTitle;
-        ImageView image;
+        ImageView image ,image2;
         TextView air , rating;
 
 
@@ -36,6 +38,8 @@ public class AirTvAdapter extends RecyclerView.Adapter <AirTvAdapter.TopViewHold
             airlayout = v.findViewById(R.id.air_layout);
             tvTitle = (TextView) v.findViewById(R.id.text_air);
             image = v.findViewById(R.id.image_air);
+            image2=v.findViewById(R.id.image_air2);
+            image2.setColorFilter(Color.argb(150,0,0,0));
             air = (TextView) v.findViewById(R.id.txt_air);
             rating=v.findViewById(R.id.rating);
 
@@ -69,6 +73,18 @@ public class AirTvAdapter extends RecyclerView.Adapter <AirTvAdapter.TopViewHold
                 .fit()
 
                 .into(holder.image);
+
+
+        Picasso.with(context)
+                .load(imageurl + airTv
+
+                        .get(position)
+                        .getBackdropPath())
+                .transform(new BlurTransformation(holder.image2.getContext(),25,1))
+                .fit()
+
+
+                .into(holder.image2);
 
 
     }

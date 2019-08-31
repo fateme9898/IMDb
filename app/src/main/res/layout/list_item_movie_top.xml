@@ -8,6 +8,8 @@
     android:layout_height="250dp"
     android:background="@color/black">
 
+
+
     <ImageView
         android:id="@+id/image_topmovie"
         android:layout_width="match_parent"

@@ -50,6 +50,7 @@ public class TvAdapter extends RecyclerView.Adapter <TvAdapter.ViewHolder> {
 
         Picasso.with(ct)
                 .load("https://image.tmdb.org/t/p/original" + product_lists.get(i).getPosterPath())
+                .fit()
 //               .transform(new BlurTransformation(viewHolder.img.getContext(),25,5))
 
                 .into(viewHolder.img)
@@ -83,11 +84,13 @@ public class TvAdapter extends RecyclerView.Adapter <TvAdapter.ViewHolder> {
                 if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(id) != 1) {
                     viewHolder.fav_btn.setImageResource(R.mipmap.tikbookmark);
                     MainActivity.favoriteDatabase.favoriteDao().addData(favoriteList);
+                    v.setAlpha(1);
+
 
                 } else {
                     viewHolder.fav_btn.setImageResource(R.mipmap.addbookmark);
                     MainActivity.favoriteDatabase.favoriteDao().delete(favoriteList);
-
+                    v.setAlpha(.5f);
                 }
 
 

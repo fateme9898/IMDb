@@ -111,7 +111,7 @@ public class NavigationTvAir extends Fragment {
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 AirTvAdapter airTvAdapter = (AirTvAdapter) recyclerView.getAdapter();
                 Tv tv = AirTvAdapter.airTv.get(position);
-                Intent intent = new Intent(getActivity(), AirTvDetail.class);
+                Intent intent = new Intent(getActivity(), TopTvDetail.class);
 
                 intent.putExtra("TYPE", tv.getId());
                 startActivity(intent);

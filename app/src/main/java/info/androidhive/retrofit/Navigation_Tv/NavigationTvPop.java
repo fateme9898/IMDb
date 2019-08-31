@@ -109,7 +109,7 @@ public class NavigationTvPop extends Fragment {
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 PopTvAdapter popTvAdapter = (PopTvAdapter) recyclerView.getAdapter();
                 Tv tv = PopTvAdapter.popTv.get(position);
-                Intent intent = new Intent(getActivity(), PopTvDetail.class);
+                Intent intent = new Intent(getActivity(), TopTvDetail.class);
 
                 intent.putExtra("TYPE", tv.getId());
                 startActivity(intent);

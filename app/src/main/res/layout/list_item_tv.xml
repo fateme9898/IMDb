@@ -5,16 +5,18 @@
     android:id="@+id/tv_layout"
     android:layout_width="match_parent"
     android:layout_height="269dp"
-    android:background="@drawable/shape3"
-    android:orientation="horizontal"
->
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@color/black"
+    android:orientation="horizontal">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true">
+        android:layout_centerVertical="true"
+        app:cardBackgroundColor="@color/black">
 
 
         <RelativeLayout
@@ -30,20 +32,20 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="2dp"
                 android:layout_marginLeft="1dp"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="2dp" />
 
             <ImageView
                 android:id="@+id/fav_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
+                android:layout_width="40dp"
+                android:layout_height="50dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:alpha="0.5"
                 android:src="@mipmap/addbookmark"
 
-            />
+                />
 
             <!--android:alpha="0.5"-->
 
@@ -52,31 +54,46 @@
                 android:id="@+id/title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="13dp"
                 android:layout_toRightOf="@+id/image2"
                 android:textColor="@color/colorWhite"
                 android:textSize="16dp"
-                android:layout_marginLeft="8dp"
                 android:textStyle="italic" />
 
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/title2"
+    android:layout_toRightOf="@+id/image2"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="30dp"
+    >
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/title_tv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/title2"
-                android:layout_marginRight="20dp"
-                android:layout_toRightOf="@+id/image2"
-                android:textColor="@color/colorGreyLight"
+                android:textColor="@color/colorGreyLight" />
+        </RelativeLayout>
 
-                android:layout_marginLeft="8dp"/>
+    </android.support.v4.widget.NestedScrollView>
+</RelativeLayout>
 
 
             <TextView
                 android:id="@+id/rating_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-android:layout_alignBottom="@id/image2"
-                android:layout_marginLeft="8dp"
+                android:layout_alignBottom="@id/image2"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/image2"
                 android:textColor="@color/BACK" />
 
@@ -84,8 +101,9 @@ android:layout_alignBottom="@id/image2"
                 android:layout_width="16dp"
                 android:layout_height="18dp"
                 android:layout_alignBottom="@+id/image2"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="35dp"
                 android:layout_toRightOf="@+id/image2"
-                android:layout_marginLeft="30dp"
                 app:srcCompat="@mipmap/star" />
 
 

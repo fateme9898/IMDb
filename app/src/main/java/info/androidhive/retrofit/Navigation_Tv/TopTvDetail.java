@@ -3,7 +3,10 @@ package info.androidhive.retrofit.Navigation_Tv;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,8 +21,12 @@ import java.util.List;
 
 import info.androidhive.retrofit.Navigation_Movie.TopMovieDetail;
 import info.androidhive.retrofit.R;
+import info.androidhive.retrofit.activity.TvDetail;
+import info.androidhive.retrofit.adapter.SimilarTvAdapter;
+import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.Tv.Tv;
+import info.androidhive.retrofit.model.Tv.TvResponse;
 import info.androidhive.retrofit.model.trailer.Trailer;
 import info.androidhive.retrofit.model.trailer.TrailerResponse;
 import info.androidhive.retrofit.rest.ApiClient;
@@ -61,7 +68,7 @@ public class TopTvDetail extends YouTubeBaseActivity implements YouTubePlayer.On
         YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_top_tv);
         youTubePlayerView.initialize(ApiClient.YOUTUBE_API_KEY , this);
 
-
+getQueryInformationSimilar();
     }
 
 
@@ -170,4 +177,67 @@ public class TopTvDetail extends YouTubeBaseActivity implements YouTubePlayer.On
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
 
     }
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    public void getQueryInformationSimilar() {
+
+        if (API_KEY.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please obtain your API KEY from themoviedb.org first!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        final RecyclerView recyclerView3 = (RecyclerView) findViewById(R.id.similar_tv_recycler);
+        recyclerView3.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView3.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
+                LinearLayoutManager.HORIZONTAL, false));
+
+        recyclerView3.addOnItemTouchListener(new ItemTouchListener(recyclerView3) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                SimilarTvAdapter similarTvAdapter = (SimilarTvAdapter) recyclerView3.getAdapter();
+                Tv tv = SimilarTvAdapter.tvs.get(position);
+                Intent intent = new Intent(TopTvDetail.this, TopTvDetail.class);
+
+                intent.putExtra("TYPE", tv.getId());
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
+
+
+
+        ApiInterface apiService =
+                ApiClient.getClient().create(ApiInterface.class);
+        Call <TvResponse> call3 = apiService.getSimilarTv(querytrailer);
+
+        call3.enqueue(new Callback <TvResponse>() {
+
+            @Override
+            public void onResponse(Call <TvResponse> call, Response <TvResponse> response) {
+                int statusCode = response.code();
+                List <Tv> tv = response.body().getResults();
+                recyclerView3.setAdapter(new SimilarTvAdapter(tv, R.layout.list_item_similar_tv,
+                        getApplicationContext()));
+
+
+            }
+
+            @Override
+            public void onFailure(Call <TvResponse> call, Throwable t) {
+                Log.e(TAG, t.toString());
+            }
+
+        });
+    }
+
 }
