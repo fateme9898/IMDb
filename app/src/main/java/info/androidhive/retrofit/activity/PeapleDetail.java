@@ -7,10 +7,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.github.chuross.library.ExpandableLayout;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,11 +23,9 @@ import java.util.List;
 import info.androidhive.retrofit.Navigation_Movie.TopMovieDetail;
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.adapter.CreditAdapter;
-import info.androidhive.retrofit.adapter.SimilarMovieAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.model.Credit_people.Cast;
 import info.androidhive.retrofit.model.Credit_people.Example;
-import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.people.KnownFor;
 import info.androidhive.retrofit.model.people.Peaple;
 import info.androidhive.retrofit.model.people.PeopleDetailModel;
@@ -65,17 +68,31 @@ public class PeapleDetail extends AppCompatActivity {
         place_info_peopledetail=findViewById(R.id.place_info_peopledetail);
 
         getQueryInformationCrew();
+        RelativeLayout b=findViewById(R.id.button);
 
-
-        ImageView back=findViewById(R.id.back2);
-        back.setOnClickListener(new View.OnClickListener() {
+        b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ExpandableLayout ex=findViewById(R.id.expandableLayout);
+                ex.expand();
+                ex.collapse();
 
-                Intent intent=new Intent(PeapleDetail.this , MainActivity.class);
-                startActivity(intent);
             }
         });
+
+
+
+
+
+//        ImageView back=findViewById(R.id.back2);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent=new Intent(PeapleDetail.this , MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 //
 //        ImageView user = findViewById(R.id.user);
