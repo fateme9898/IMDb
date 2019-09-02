@@ -14,7 +14,10 @@ import java.util.List;
 
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.adapter.FavoriteAdapter;
+import info.androidhive.retrofit.adapter.FilterPeopleAdapter;
+import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.db.FavoriteList;
+import info.androidhive.retrofit.model.filter_search.FilterPeople;
 
 
 public class Saved extends AppCompatActivity {
@@ -58,6 +61,32 @@ public class Saved extends AppCompatActivity {
 
     private void getFavData() {
         List<FavoriteList>favoriteLists=MainActivity.favoriteDatabase.favoriteDao().getFavoriteData();
+        rv.addOnItemTouchListener(new ItemTouchListener(rv) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                FavoriteAdapter favoriteAdapter = (FavoriteAdapter) rv.getAdapter();
+                FavoriteList favoriteAdapter1 = FavoriteAdapter.favoriteLists.get(position);
+
+                    Intent intent = new Intent(Saved.this, MovieDetail.class);
+
+                intent.putExtra("TYPE", favoriteAdapter1.getId());
+                startActivity(intent);
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
+
 
         adapter=new FavoriteAdapter(favoriteLists,getApplicationContext());
         rv.setAdapter(adapter);

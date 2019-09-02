@@ -21,7 +21,7 @@ import info.androidhive.retrofit.model.search.Search2;
 
 public class FilterPeopleAdapter extends RecyclerView.Adapter<FilterPeopleAdapter.FilterPeopleViewHolder> {
 
-    private List<FilterPeople> filterpeople;
+    public static List<FilterPeople> filterpeople;
     private int rowLayout;
     private Context context;
 

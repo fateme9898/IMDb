@@ -46,6 +46,7 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
         final Movie productList = product_lists.get(i);
         String pimg = productList.getTitle();
 
+
         Picasso.with(ct)
                 .load("https://image.tmdb.org/t/p/original" + product_lists
 
@@ -59,6 +60,7 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
 
         viewHolder.tv.setText(productList.getTitle());
         viewHolder.rating.setText(productList.getVoteAverage().toString());
+//        viewHolder.media.setText(productList.get);
         if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(productList.getId()) == 1)
             viewHolder.fav_btn.setImageResource(R.mipmap.tikbookmark);
         else
@@ -120,7 +122,7 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
 
     public static class ViewHolder extends RecyclerView.ViewHolder   {
         ImageView img, fav_btn;
-        TextView tv, rating;
+        TextView tv, rating , media;
         RelativeLayout relativeLayout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -130,6 +132,7 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
             fav_btn = (ImageView) itemView.findViewById(R.id.fav_btn);
             rating = itemView.findViewById(R.id.rating);
             relativeLayout = itemView.findViewById(R.id.movies_layout);
+            media=itemView.findViewById(R.id.media);
 
 //            itemView.setTag(itemView);
 //            itemView.setOnClickListener(this);

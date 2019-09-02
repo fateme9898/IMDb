@@ -21,7 +21,7 @@ import info.androidhive.retrofit.model.search.Search2;
 
 public class FilterTvAdapter extends RecyclerView.Adapter<FilterTvAdapter.FilterTvViewHolder> {
 
-   public List<FilterTv> filtertv;
+   public static List<FilterTv> filtertv;
     private int rowLayout;
     private Context context;
 

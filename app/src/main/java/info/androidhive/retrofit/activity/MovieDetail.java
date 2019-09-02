@@ -65,6 +65,36 @@ public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.On
 
 
         getQueryInformationSimilar();
+
+
+        ImageView back=findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(MovieDetail.this , MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        ImageView user = findViewById(R.id.user);
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MovieDetail.this, Saved.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView search = findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MovieDetail.this, Search.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -96,6 +126,9 @@ public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.On
                 Log.e(TAG, t.toString());
             }
         });
+
+
+
 
     }
 

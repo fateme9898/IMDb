@@ -21,8 +21,11 @@ import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.adapter.FilterMovieAdapter;
 import info.androidhive.retrofit.adapter.FilterPeopleAdapter;
 import info.androidhive.retrofit.adapter.FilterTvAdapter;
+import info.androidhive.retrofit.adapter.NowPlayingAdapter;
 import info.androidhive.retrofit.adapter.SearchAdapter;
 import info.androidhive.retrofit.adapter.TvAdapter;
+import info.androidhive.retrofit.another.ItemTouchListener;
+import info.androidhive.retrofit.model.NowPlaying.NowPlaying;
 import info.androidhive.retrofit.model.filter_search.FilterMovie;
 import info.androidhive.retrofit.model.filter_search.FilterMovieResponse;
 import info.androidhive.retrofit.model.filter_search.FilterPeople;
@@ -108,8 +111,7 @@ public class Search extends AppCompatActivity {
 
                     getQuerySearch_people();
 
-                }
-                else {
+                } else {
 
                     getQuerySearch();
                 }
@@ -131,7 +133,43 @@ public class Search extends AppCompatActivity {
             return;
         }
 
+        recyclerView.addOnItemTouchListener(new ItemTouchListener(recyclerView) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                SearchAdapter searchAdapter = (SearchAdapter) recyclerView.getAdapter();
+                Search2 searchAdapter1 = SearchAdapter.search.get(position);
+                if (searchAdapter1.getMediaType().equals("movie")) {
+                    Intent intent = new Intent(Search.this, MovieDetail.class);
 
+                    intent.putExtra("TYPE", searchAdapter1.getId());
+                    startActivity(intent);
+
+                } else if (searchAdapter1.getMediaType().equals("tv")) {
+                    Intent intent = new Intent(Search.this, TvDetail.class);
+
+                    intent.putExtra("TYPE", searchAdapter1.getId());
+                    startActivity(intent);
+
+                } else if (searchAdapter1.getMediaType().equals("person")) {
+                    Intent intent = new Intent(Search.this, PeapleDetail.class);
+
+                    intent.putExtra("TYPE", searchAdapter1.getId());
+                    startActivity(intent);
+                }
+
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
@@ -167,7 +205,31 @@ public class Search extends AppCompatActivity {
                     "API KEY from themoviedb.org first!", Toast.LENGTH_LONG).show();
             return;
         }
+        recyclerView.addOnItemTouchListener(new ItemTouchListener(recyclerView) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                FilterTvAdapter searchAdapter = (FilterTvAdapter) recyclerView.getAdapter();
+                FilterTv searchAdapter1 = FilterTvAdapter.filtertv.get(position);
 
+                    Intent intent = new Intent(Search.this, TvDetail.class);
+
+                    intent.putExtra("TYPE", searchAdapter1.getId());
+                    startActivity(intent);
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
 
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
@@ -201,6 +263,31 @@ public class Search extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please obtain your API KEY from themoviedb.org first!", Toast.LENGTH_LONG).show();
             return;
         }
+        recyclerView.addOnItemTouchListener(new ItemTouchListener(recyclerView) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                FilterMovieAdapter searchAdapter = (FilterMovieAdapter) recyclerView.getAdapter();
+                FilterMovie searchAdapter1 = FilterMovieAdapter.filtermovie.get(position);
+
+                Intent intent = new Intent(Search.this, MovieDetail.class);
+
+                intent.putExtra("TYPE", searchAdapter1.getId());
+                startActivity(intent);
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
 
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
@@ -232,6 +319,31 @@ public class Search extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please obtain your API KEY from themoviedb.org first!", Toast.LENGTH_LONG).show();
             return;
         }
+        recyclerView.addOnItemTouchListener(new ItemTouchListener(recyclerView) {
+            @Override
+            public boolean onClick(RecyclerView parent, View view, int position, long id) {
+                FilterPeopleAdapter searchAdapter = (FilterPeopleAdapter) recyclerView.getAdapter();
+                FilterPeople searchAdapter1 = FilterPeopleAdapter.filterpeople.get(position);
+
+                Intent intent = new Intent(Search.this, PeapleDetail.class);
+
+                intent.putExtra("TYPE", searchAdapter1.getId());
+                startActivity(intent);
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
+                return false;
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+            }
+        });
 
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);

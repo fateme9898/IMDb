@@ -71,6 +71,35 @@ public class TvDetail extends YouTubeBaseActivity implements YouTubePlayer.OnIni
 
         getQueryInformationSimilar();
 
+        ImageView back=findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(TvDetail.this , MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        ImageView user = findViewById(R.id.user);
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TvDetail.this, Saved.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView search = findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TvDetail.this, Search.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 

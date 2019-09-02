@@ -20,7 +20,7 @@ import info.androidhive.retrofit.model.search.Search2;
 
 public class FilterMovieAdapter extends RecyclerView.Adapter <FilterMovieAdapter.FilterMovieViewHolder> {
 
-    private List <FilterMovie> filtermovie;
+    public static List <FilterMovie> filtermovie;
     private int rowLayout;
     private Context context;
 

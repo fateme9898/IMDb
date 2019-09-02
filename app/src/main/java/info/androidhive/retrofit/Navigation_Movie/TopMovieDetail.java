@@ -20,7 +20,10 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import info.androidhive.retrofit.R;
+import info.androidhive.retrofit.activity.MainActivity;
 import info.androidhive.retrofit.activity.MovieDetail;
+import info.androidhive.retrofit.activity.PeapleDetail;
+import info.androidhive.retrofit.activity.Saved;
 import info.androidhive.retrofit.activity.Search;
 import info.androidhive.retrofit.adapter.SimilarMovieAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
@@ -68,6 +71,36 @@ public class TopMovieDetail  extends YouTubeBaseActivity implements YouTubePlaye
 
         getQueryInformationSimilar();
 
+
+        ImageView back=findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(TopMovieDetail.this , MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        ImageView user = findViewById(R.id.user);
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TopMovieDetail.this, Saved.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView search = findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TopMovieDetail.this, Search.class);
+                startActivity(intent);
+            }
+        });
+
 }
 
 
@@ -106,7 +139,7 @@ public class TopMovieDetail  extends YouTubeBaseActivity implements YouTubePlaye
     public void bindView(Movie movie) {
         text_info_moviedetail.setText(movie.getOverview());
         title_info_moviedetail.setText(movie.getTitle());
-        Picasso.with(getBaseContext()).load("https://image.tmdb.org/t/p/original" + movie.getPosterPath()).into(image_info_moviedetail);
+        Picasso.with(getBaseContext()).load("https://image.tmdb.org/t/p/original" + movie.getPosterPath()).fit().into(image_info_moviedetail);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -198,7 +231,7 @@ public class TopMovieDetail  extends YouTubeBaseActivity implements YouTubePlaye
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 SimilarMovieAdapter similarMovieAdapter = (SimilarMovieAdapter) recyclerView3.getAdapter();
                 Movie movie = SimilarMovieAdapter.movies.get(position);
-                Intent intent = new Intent(TopMovieDetail.this, MovieDetail.class);
+                Intent intent = new Intent(TopMovieDetail.this, TopMovieDetail.class);
 
                 intent.putExtra("TYPE", movie.getId());
                 startActivity(intent);

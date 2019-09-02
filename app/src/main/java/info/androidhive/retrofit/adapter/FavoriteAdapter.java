@@ -18,7 +18,7 @@ import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.db.FavoriteList;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
-private List<FavoriteList>favoriteLists;
+public static List<FavoriteList>favoriteLists;
         Context context;
 
 public FavoriteAdapter(List<FavoriteList> favoriteLists, Context context) {
@@ -42,6 +42,7 @@ public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
                     .get(i)
 
                     .getImage())
+            .fit()
             .into(viewHolder.img)
 
     ;

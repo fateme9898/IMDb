@@ -21,4 +21,5 @@
     <color name="darkblue">#083a69</color>
     <color name="titleColor">#5ca8f9</color>
     <color name="BACK">#bfdcfd</color>
+    <color name="transparent">#00711616</color>
 </resources>

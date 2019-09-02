@@ -18,7 +18,7 @@ import info.androidhive.retrofit.model.search.Search2;
 
 public class SearchAdapter extends RecyclerView.Adapter <SearchAdapter.SearchViewHolder> {
 
-    private List <Search2> search;
+    public static List <Search2> search;
     private int rowLayout;
     private Context context;
 

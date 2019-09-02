@@ -19,6 +19,9 @@ public class FavoriteList {
     @ColumnInfo(name = "rating")
     private String rating;
 
+    @ColumnInfo(name = "media")
+    private String media;
+
     public int getId() {
         return id;
     }
@@ -51,5 +54,15 @@ public class FavoriteList {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+
+
+    public String getMedia() {
+        return media;
+    }
+
+    public void setMedia(String media) {
+        this.media = media;
     }
 }

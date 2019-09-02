@@ -84,34 +84,17 @@ public class PeapleDetail extends AppCompatActivity {
 
 
 
-//        ImageView back=findViewById(R.id.back2);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent=new Intent(PeapleDetail.this , MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        ImageView back=findViewById(R.id.back2);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-//
-//        ImageView user = findViewById(R.id.user);
-//        user.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(PeapleDetail.this, Saved.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        ImageView search = findViewById(R.id.search);
-//        search.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(PeapleDetail.this, Search.class);
-//                startActivity(intent);
-//            }
-//        });
+                Intent intent=new Intent(PeapleDetail.this , MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
 

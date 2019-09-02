@@ -21,6 +21,10 @@ import java.util.List;
 
 import info.androidhive.retrofit.Navigation_Movie.TopMovieDetail;
 import info.androidhive.retrofit.R;
+import info.androidhive.retrofit.activity.MainActivity;
+import info.androidhive.retrofit.activity.PeapleDetail;
+import info.androidhive.retrofit.activity.Saved;
+import info.androidhive.retrofit.activity.Search;
 import info.androidhive.retrofit.activity.TvDetail;
 import info.androidhive.retrofit.adapter.SimilarTvAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
@@ -69,6 +73,36 @@ public class TopTvDetail extends YouTubeBaseActivity implements YouTubePlayer.On
         youTubePlayerView.initialize(ApiClient.YOUTUBE_API_KEY , this);
 
 getQueryInformationSimilar();
+
+
+        ImageView back=findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(TopTvDetail.this , MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        ImageView user = findViewById(R.id.user);
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TopTvDetail.this, Saved.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView search = findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TopTvDetail.this, Search.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
