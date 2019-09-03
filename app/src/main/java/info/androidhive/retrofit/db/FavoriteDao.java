@@ -24,5 +24,7 @@ public interface FavoriteDao {
     @Delete
     public void delete(FavoriteList favoriteList);
 
+    @Query("DELETE FROM favoritelist WHERE id = :itemId")
+    void deleteByItemId(int itemId);
 
 }

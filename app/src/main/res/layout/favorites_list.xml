@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:ndroid="http://schemas.android.com/tools"
+    android:id="@+id/favorit_layout"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     android:orientation="vertical">
 
@@ -22,34 +23,44 @@
                 android:id="@+id/fimg_pr"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/shape"
+                android:background="@drawable/shape2"
                 android:paddingBottom="2dp"
                 android:paddingLeft="2dp"
                 android:paddingRight="2dp"
                 android:paddingTop="2dp" />
+
+            <ImageView
+                android:id="@+id/fav_btn_back"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="1dp"
+                android:alpha="0.5"
+                android:src="@mipmap/addbookmark" />
 
             <TextView
                 android:id="@+id/ftv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-          android:layout_toRightOf="@+id/fimg_pr"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/fimg_pr"
                 android:textColor="@color/colorWhite"
                 android:textSize="15dp"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ftv_name"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/fimg_pr"
-                android:layout_marginLeft="15dp"
                 android:textColor="@color/colorGreyLight"
 
-               />
+                />
 
             <ImageView
                 android:layout_width="12dp"
@@ -58,16 +69,16 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="15dp"
                 android:layout_toRightOf="@+id/rating"
-                app:srcCompat="@mipmap/star"
-                />
-<TextView
-    android:id="@+id/media"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/rating"
-    android:layout_toRightOf="@id/fimg_pr"
-    android:layout_marginLeft="15dp"
-    android:layout_marginTop="10dp"/>
+                app:srcCompat="@mipmap/star" />
+
+            <TextView
+                android:id="@+id/media"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rating"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/fimg_pr" />
 
         </RelativeLayout>
 

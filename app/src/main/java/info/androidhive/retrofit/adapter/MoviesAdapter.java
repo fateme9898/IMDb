@@ -44,7 +44,7 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
         final Movie productList = product_lists.get(i);
-        String pimg = productList.getTitle();
+      //  String pimg = productList.getTitle();
 
 
         Picasso.with(ct)

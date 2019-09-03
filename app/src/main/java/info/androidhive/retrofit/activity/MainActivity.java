@@ -317,31 +317,7 @@ account.setOnClickListener(new View.OnClickListener() {
 //
         moviesAdapter = new MoviesAdapter(movies ,R.layout.list_item_movie, this,this);
         recyclerView.setAdapter(moviesAdapter);
-//        moviesAdapter.setClickListener(this);
 
-
-//        recyclerView.addOnItemTouchListener(new ItemTouchListener(recyclerView) {
-//            @Override
-//            public boolean onClick(RecyclerView parent, View view, int position, long id) {
-//                MoviesAdapter moviesAdapter = (MoviesAdapter) recyclerView.getAdapter();
-//                Movie movie = moviesAdapter.product_lists.get(position);
-//                Intent intent = new Intent(MainActivity.this, MovieDetail.class);
-//
-//                intent.putExtra("TYPE", movie.getId());
-//                startActivity(intent);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
-//                return false;
-//            }
-//
-//            @Override
-//            public void onRequestDisallowInterceptTouchEvent(boolean b) {
-//
-//            }
-//        });
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
         Call <MoviesResponse> call = apiService.getTopRatedMovies(API_KEY);
