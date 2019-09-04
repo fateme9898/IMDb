@@ -10,6 +10,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -38,6 +39,7 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
         ImageView image , image_topmovie2 ;
         TextView data;
         TextView rating;
+        RatingBar ratingBar;
 
 
         public TopViewHolder(View v) {
@@ -48,6 +50,7 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
             image.setColorFilter(Color.argb(150,0,0,0));
             image_topmovie2=v.findViewById(R.id.image_topmovie2);
             data = (TextView) v.findViewById(R.id.txt_topmovie);
+            ratingBar=v.findViewById(R.id.ratingbar);
 
            rating=v.findViewById(R.id.rating);
 
@@ -72,7 +75,9 @@ public class TopMovieAdapter extends RecyclerView.Adapter <TopMovieAdapter.TopVi
     public void onBindViewHolder(TopViewHolder holder, final int position) {
         holder.movieTitle.setText(topMovies.get(position).getTitle());
         holder.data.setText(topMovies.get(position).getReleaseDate());
-       holder.rating.setText(topMovies.get(position).getVoteAverage().toString());
+        holder.rating.setText(topMovies.get(position).getVoteAverage().toString());
+        holder.ratingBar.setRating(topMovies.get(position).getVoteAverage().floatValue()/10);
+
 
 
         Picasso.with(context)

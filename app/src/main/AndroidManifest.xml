@@ -18,6 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="0a82d71e85c3af7d72a503e51c6de1a5616e1656"
+            />
+
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.Search" />
         <activity android:name=".activity.Trailer_page" />
@@ -33,6 +38,8 @@
             android:label="@string/title_activity_navigation_tv" />
         <activity android:name=".Navigation_Movie.TopMovieDetail" />
         <activity android:name=".Navigation_Tv.TopTvDetail" />
+
+
     </application>
 
 </manifest>
