@@ -59,10 +59,14 @@ public class TvAdapter extends RecyclerView.Adapter <TvAdapter.ViewHolder> {
         viewHolder.title_tv2.setText(productList.getOverview());
         viewHolder.tv.setText(productList.getName());
        viewHolder.rating.setText(productList.getVoteAverage().toString());
-        if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(productList.getId()) == 1)
+        if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(productList.getId()) == 1) {
             viewHolder.fav_btn.setImageResource(R.mipmap.tikbookmark);
-        else
+        }
+
+        else {
             viewHolder.fav_btn.setImageResource(R.mipmap.addbookmark);
+            viewHolder.fav_btn.setAlpha(.5f);
+        }
 
 
         viewHolder.fav_btn.setOnClickListener(new View.OnClickListener() {

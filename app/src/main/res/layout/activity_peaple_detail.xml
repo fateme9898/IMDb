@@ -17,11 +17,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-
-
-
+            android:layout_height="match_parent">
 
 
             <RelativeLayout
@@ -56,8 +52,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="480dp"
-                android:background="@drawable/detailperson"
-                >
+                android:background="@drawable/detailperson">
 
 
                 <TextView
@@ -80,31 +75,31 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/colorWhite"
-                    android:textSize="15dp"
-                    />
+                    android:textSize="15dp" />
+
                 <TextView
                     android:id="@+id/birth_info_peopledetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/place_info_peopledetail"
+                    android:layout_marginBottom="6dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="4dp"
-                    android:layout_below="@id/place_info_peopledetail"
                     android:textColor="@color/colorWhite"
-                    android:textSize="15dp"
-                    android:layout_marginBottom="6dp"/>
+                    android:textSize="15dp" />
 
                 <TextView
+                    android:id="@+id/seemore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="See More "
-                    android:layout_below="@id/place_info_peopledetail"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="6dp"
                     android:layout_alignParentRight="true"
+                    android:layout_below="@id/place_info_peopledetail"
+                    android:layout_marginBottom="6dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:textColor="@color/orange"
-               />
+                    android:layout_marginTop="4dp"
+                    android:text="See More "
+                    android:textColor="@color/orange" />
 
             </RelativeLayout>
 
@@ -124,13 +119,12 @@
                     android:layout_height="wrap_content"
 
 
-                    android:paddingRight="10dp"
-                    android:textColor="@color/colorGreyLight"
-android:paddingTop="10dp"
-                    android:textSize="15dp"
-                    android:paddingLeft="10dp"
                     android:paddingBottom="10dp"
-                    />
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/colorGreyLight"
+                    android:textSize="15dp" />
 
 
             </com.github.chuross.library.ExpandableLayout>

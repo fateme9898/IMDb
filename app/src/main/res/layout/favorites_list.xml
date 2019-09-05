@@ -31,13 +31,12 @@
 
             <ImageView
                 android:id="@+id/fav_btn_back"
-                android:layout_width="25dp"
-                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="1dp"
-                android:alpha="0.5"
-                android:src="@mipmap/addbookmark" />
+                android:src="@mipmap/tikbookmark" />
 
             <TextView
                 android:id="@+id/ftv_name"

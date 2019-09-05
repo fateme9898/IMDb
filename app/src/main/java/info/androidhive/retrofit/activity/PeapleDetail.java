@@ -70,7 +70,9 @@ public class PeapleDetail extends AppCompatActivity {
         getQueryInformationCrew();
         RelativeLayout b=findViewById(R.id.button);
 
-        b.setOnClickListener(new View.OnClickListener() {
+        TextView seemore=findViewById(R.id.seemore);
+
+        seemore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ExpandableLayout ex=findViewById(R.id.expandableLayout);

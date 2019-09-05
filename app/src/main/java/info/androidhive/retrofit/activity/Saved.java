@@ -51,9 +51,10 @@ public class Saved extends AppCompatActivity implements FavoriteAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Saved.this, MainActivity.class);
-                startActivity(intent);
+             startActivityForResult(intent , 1);
             }
         });
+
         search = findViewById(R.id.search_saved);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,9 +64,17 @@ public class Saved extends AppCompatActivity implements FavoriteAdapter.ViewHold
             }
         });
 
+//        onBackPressed();
+
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(Saved.this , MainActivity.class);
+        startActivityForResult(intent , 1);
+    }
 
     private void getFavData() {
 
@@ -87,4 +96,7 @@ public class Saved extends AppCompatActivity implements FavoriteAdapter.ViewHold
         intent.putExtra("TYPE", favoriteList.getId());
         startActivity(intent);
     }
+
+
+
 }

@@ -239,6 +239,8 @@ account.setOnClickListener(new View.OnClickListener() {
     }
 
 
+
+
 /////////////////////////////////////METHODS////////////////////////////////////////////////////////
     public  void  trailerMethod(){
             if (API_KEY.isEmpty()) {
@@ -281,11 +283,17 @@ account.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onResponse(Call <NowPlayingResponse> call, Response <NowPlayingResponse>
                         response) {
-                    int statusCode = response.code();
-                    List <NowPlaying> trailers = response.body().getResults();
+                    try{
+                        int statusCode = response.code();
 
-                    recyclerView4.setAdapter(new NowPlayingAdapter(trailers, R.layout.now_playing,
-                            getApplicationContext()));
+                        List <NowPlaying> trailers = response.body().getResults();
+
+                        recyclerView4.setAdapter(new NowPlayingAdapter(trailers, R.layout.now_playing,
+                                getApplicationContext()));
+                    }catch (Exception e) {
+
+                    }
+
                 }
 
                 @Override
@@ -326,11 +334,15 @@ account.setOnClickListener(new View.OnClickListener() {
             public void onResponse(Call <MoviesResponse> call, Response <MoviesResponse>
                     response) {
                 int statusCode = response.code();
-                movies.addAll(response.body().getResults());
-                moviesAdapter.notifyDataSetChanged();
+                try {
+                    movies.addAll(response.body().getResults());
+                    moviesAdapter.notifyDataSetChanged();
 
 //                recyclerView.setAdapter(new MoviesAdapter(movies, R.layout.list_item_movie,
 //                        getApplicationContext(),));
+                }catch (Exception e)
+                {}
+
             }
 
             @Override
@@ -389,12 +401,15 @@ account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onResponse(Call <TvResponse> call, Response <TvResponse> response) {
                 int statusCode = response.code();
-
-                tvs.addAll(response.body().getResults());
-                tvAdapter.notifyDataSetChanged();
+                try {
+                    tvs.addAll(response.body().getResults());
+                    tvAdapter.notifyDataSetChanged();
 //                List <Tv> tv = response.body().getResults();
 //                recyclerView2.setAdapter(new TvAdapter(tv, R.layout.list_item_tv,
 //                        getApplicationContext()));
+                } catch (Exception e) {
+
+                }
             }
 
             @Override
@@ -457,9 +472,14 @@ account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onResponse(Call <PeapleResponse> call, Response <PeapleResponse> response) {
                 int statusCode = response.code();
-                List <Peaple> peaples = response.body().getResults();
-                recyclerView3.setAdapter(new PeapleAdapter(peaples, R.layout.list_item_peaple,
-                        getApplicationContext()));
+                try {
+                    List <Peaple> peaples = response.body().getResults();
+                    recyclerView3.setAdapter(new PeapleAdapter(peaples, R.layout.list_item_peaple,
+                            getApplicationContext()));
+
+                }catch (Exception e) {
+
+                }
 
 
             }

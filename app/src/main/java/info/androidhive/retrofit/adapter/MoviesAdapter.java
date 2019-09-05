@@ -61,11 +61,14 @@ public class MoviesAdapter extends RecyclerView.Adapter <MoviesAdapter.ViewHolde
         viewHolder.tv.setText(productList.getTitle());
         viewHolder.rating.setText(productList.getVoteAverage().toString());
 //        viewHolder.media.setText(productList.get);
-        if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(productList.getId()) == 1)
+        if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(productList.getId()) == 1) {
             viewHolder.fav_btn.setImageResource(R.mipmap.tikbookmark);
-        else
-            viewHolder.fav_btn.setImageResource(R.mipmap.addbookmark);
 
+        }
+        else {
+            viewHolder.fav_btn.setImageResource(R.mipmap.addbookmark);
+            viewHolder.fav_btn.setAlpha(.5f);
+        }
 
         viewHolder.fav_btn.setOnClickListener(new View.OnClickListener() {
             @Override
