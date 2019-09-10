@@ -17,6 +17,7 @@ import java.util.List;
 
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
+import info.androidhive.retrofit.activity.TvDetail;
 import info.androidhive.retrofit.adapter.TopTvAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.model.Tv.Tv;
@@ -108,7 +109,7 @@ public class NavigationTvTop extends Fragment {
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 TopTvAdapter topTvAdapter = (TopTvAdapter) recyclerView.getAdapter();
                 Tv tv = TopTvAdapter.topTv.get(position);
-                Intent intent = new Intent(getActivity(), TopTvDetail.class);
+                Intent intent = new Intent(getActivity(), TvDetail.class);
 
                 intent.putExtra("TYPE", tv.getId());
                 startActivity(intent);

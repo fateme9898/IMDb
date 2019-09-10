@@ -17,6 +17,7 @@ import java.util.List;
 
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
+import info.androidhive.retrofit.activity.TvDetail;
 import info.androidhive.retrofit.adapter.AirTvAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.model.Tv.Tv;
@@ -111,7 +112,7 @@ public class NavigationTvAir extends Fragment {
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 AirTvAdapter airTvAdapter = (AirTvAdapter) recyclerView.getAdapter();
                 Tv tv = AirTvAdapter.airTv.get(position);
-                Intent intent = new Intent(getActivity(), TopTvDetail.class);
+                Intent intent = new Intent(getActivity(), TvDetail.class);
 
                 intent.putExtra("TYPE", tv.getId());
                 startActivity(intent);

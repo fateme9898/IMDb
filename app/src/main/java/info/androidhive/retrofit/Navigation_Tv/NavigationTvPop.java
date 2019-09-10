@@ -17,6 +17,7 @@ import java.util.List;
 
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
+import info.androidhive.retrofit.activity.TvDetail;
 import info.androidhive.retrofit.adapter.AirTvAdapter;
 import info.androidhive.retrofit.adapter.PopTvAdapter;
 import info.androidhive.retrofit.adapter.TopTvAdapter;
@@ -109,7 +110,7 @@ public class NavigationTvPop extends Fragment {
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 PopTvAdapter popTvAdapter = (PopTvAdapter) recyclerView.getAdapter();
                 Tv tv = PopTvAdapter.popTv.get(position);
-                Intent intent = new Intent(getActivity(), TopTvDetail.class);
+                Intent intent = new Intent(getActivity(), TvDetail.class);
 
                 intent.putExtra("TYPE", tv.getId());
                 startActivity(intent);

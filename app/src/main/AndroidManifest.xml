@@ -36,7 +36,6 @@
         <activity
             android:name=".Navigation_Tv.NavigationTv"
             android:label="@string/title_activity_navigation_tv" />
-        <activity android:name=".Navigation_Tv.TopTvDetail" />
 
 
     </application>
