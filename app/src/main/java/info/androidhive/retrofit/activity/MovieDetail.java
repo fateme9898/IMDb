@@ -1,5 +1,6 @@
 package info.androidhive.retrofit.activity;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,12 +17,14 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import info.androidhive.retrofit.Navigation_Movie.TopMovieDetail;
 import info.androidhive.retrofit.R;
+import info.androidhive.retrofit.adapter.MoviesAdapter;
 import info.androidhive.retrofit.adapter.SimilarMovieAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
+import info.androidhive.retrofit.db.FavoriteDatabase;
 import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.Movie.MoviesResponse;
 import info.androidhive.retrofit.model.trailer.Trailer;
@@ -32,13 +35,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
+public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener, SimilarMovieAdapter.ViewHolder.ItemClickListener {
 
     private final static String API_KEY = "53f93d98fdababca6efda85ba6ccc57a";
     private int querytrailer;
     TextView text_info_moviedetail;
     TextView title_info_moviedetail;
     ImageView image_info_moviedetail;
+    private List <Movie> movies;
+    SimilarMovieAdapter similarMovieAdapter;
+    public  static      FavoriteDatabase favoriteDatabase;
 
     private static final String TAG = Search.class.getSimpleName();
 
@@ -46,6 +52,8 @@ public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
+
+        movies = new ArrayList <>();
 
 
         Intent getid = getIntent();
@@ -63,16 +71,17 @@ public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.On
         YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_movie);
         youTubePlayerView.initialize(ApiClient.YOUTUBE_API_KEY, this);
 
+         favoriteDatabase= Room.databaseBuilder(getApplicationContext(),FavoriteDatabase.class,"myfavdb").allowMainThreadQueries().build();
 
         getQueryInformationSimilar();
 
 
-        ImageView back=findViewById(R.id.back);
+        ImageView back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent(MovieDetail.this , MainActivity.class);
+                Intent intent = new Intent(MovieDetail.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -128,8 +137,6 @@ public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.On
         });
 
 
-
-
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -182,11 +189,15 @@ public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.On
         call.enqueue(new Callback <TrailerResponse>() {
             @Override
             public void onResponse(Call <TrailerResponse> call, Response <TrailerResponse> response) {
+                try {
+
+
                 int statusCode = response.code();
                 TrailerResponse trailerResponse = response.body();
                 List <Trailer> trailers = trailerResponse.getResults();
                 if (trailers.size() > 0)
                     youTubePlayer.loadVideo(trailers.get(0).getKey());
+                }catch (Exception e){}
 
             }
 
@@ -220,54 +231,48 @@ public class MovieDetail extends YouTubeBaseActivity implements YouTubePlayer.On
         recyclerView3.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false));
 
-        recyclerView3.addOnItemTouchListener(new ItemTouchListener(recyclerView3) {
-            @Override
-            public boolean onClick(RecyclerView parent, View view, int position, long id) {
-                SimilarMovieAdapter similarMovieAdapter = (SimilarMovieAdapter) recyclerView3.getAdapter();
-                Movie movie = SimilarMovieAdapter.movies.get(position);
-                Intent intent = new Intent(MovieDetail.this, MovieDetail.class);
-
-                intent.putExtra("TYPE", movie.getId());
-                startActivity(intent);
-                return false;
-            }
-
-            @Override
-            public boolean onLongClick(RecyclerView parent, View view, int position, long id) {
-                return false;
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean b) {
-
-            }
-        });
+        similarMovieAdapter = new SimilarMovieAdapter(movies ,R.layout.list_item_similar_movie, this,this);
+        recyclerView3.setAdapter(similarMovieAdapter);
 
 
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
         Call <MoviesResponse> call3 = apiService.getSimilarMovie(querytrailer);
 
-            call3.enqueue(new Callback <MoviesResponse>() {
+        call3.enqueue(new Callback <MoviesResponse>() {
 
-                @Override
-                public void onResponse(Call <MoviesResponse> call, Response <MoviesResponse> response) {
-                    int statusCode = response.code();
-                    List <Movie> peaples = response.body().getResults();
-                    recyclerView3.setAdapter(new SimilarMovieAdapter(peaples, R.layout.list_item_similar_movie,
-                            getApplicationContext()));
+            @Override
+            public void onResponse(Call <MoviesResponse> call, Response <MoviesResponse> response) {
+                int statusCode = response.code();
+                try {
+                    movies.addAll(response.body().getResults());
+                    similarMovieAdapter.notifyDataSetChanged();
 
-
-                }
-
-                @Override
-                public void onFailure(Call <MoviesResponse> call, Throwable t) {
-                    Log.e(TAG, t.toString());
-                }
-
-            });
+//                recyclerView.setAdapter(new MoviesAdapter(movies, R.layout.list_item_movie,
+//                        getApplicationContext(),));
+                }catch (Exception e)
+                {}
 
 
+            }
 
+            @Override
+            public void onFailure(Call <MoviesResponse> call, Throwable t) {
+                Log.e(TAG, t.toString());
+            }
+
+        });
+
+
+    }
+
+    @Override
+    public void onClick(View view, int position) {
+        final Movie movie = movies.get(position);
+        Intent i = new Intent(this, MovieDetail.class);
+
+
+        i.putExtra("TYPE", movie.getId());
+        startActivity(i);
     }
 }

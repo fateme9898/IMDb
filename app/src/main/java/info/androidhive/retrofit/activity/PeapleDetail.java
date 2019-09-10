@@ -7,8 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,7 +18,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import info.androidhive.retrofit.Navigation_Movie.TopMovieDetail;
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.adapter.CreditAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
@@ -236,7 +233,7 @@ place_info_peopledetail.setText(movie.getPlaceOfBirth());
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 CreditAdapter creditAdapter = (CreditAdapter) recyclerView3.getAdapter();
                 Cast creditAdapter1 = CreditAdapter.movies.get(position);
-                Intent intent = new Intent(PeapleDetail.this, TopMovieDetail.class);
+                Intent intent = new Intent(PeapleDetail.this, MovieDetail.class);
 
                 intent.putExtra("TYPE", creditAdapter1.getId());
                 startActivity(intent);

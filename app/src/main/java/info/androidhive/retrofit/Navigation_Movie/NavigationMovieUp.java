@@ -17,6 +17,7 @@ import java.util.List;
 
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
+import info.androidhive.retrofit.activity.MovieDetail;
 import info.androidhive.retrofit.adapter.UpCommingAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.model.UpComming.UpComming;
@@ -113,7 +114,7 @@ public class NavigationMovieUp extends Fragment {
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 UpCommingAdapter upCommingAdapter = (UpCommingAdapter) recyclerView.getAdapter();
                 UpComming movie = upCommingAdapter.upCommings.get(position);
-                Intent intent = new Intent(getActivity(), TopMovieDetail.class);
+                Intent intent = new Intent(getActivity(), MovieDetail.class);
 
                 intent.putExtra("TYPE", movie.getId());
                 startActivity(intent);

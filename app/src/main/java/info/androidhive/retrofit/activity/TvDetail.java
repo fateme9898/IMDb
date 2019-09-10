@@ -18,14 +18,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import info.androidhive.retrofit.Navigation_Movie.TopMovieDetail;
-import info.androidhive.retrofit.Navigation_Tv.TopTvDetail;
 import info.androidhive.retrofit.R;
-import info.androidhive.retrofit.adapter.SimilarMovieAdapter;
 import info.androidhive.retrofit.adapter.SimilarTvAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
-import info.androidhive.retrofit.model.Movie.Movie;
-import info.androidhive.retrofit.model.Movie.MoviesResponse;
 import info.androidhive.retrofit.model.Tv.Tv;
 import info.androidhive.retrofit.model.Tv.TvResponse;
 import info.androidhive.retrofit.model.trailer.Trailer;

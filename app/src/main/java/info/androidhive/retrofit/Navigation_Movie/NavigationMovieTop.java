@@ -17,6 +17,7 @@ import java.util.List;
 
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
+import info.androidhive.retrofit.activity.MovieDetail;
 import info.androidhive.retrofit.adapter.TopMovieAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.model.Top_movie.TopMovie;
@@ -111,7 +112,7 @@ public class NavigationMovieTop extends Fragment {
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 TopMovieAdapter topMovieAdapter = (TopMovieAdapter) recyclerView.getAdapter();
                 TopMovie movie = TopMovieAdapter.topMovies.get(position);
-                Intent intent = new Intent(getActivity(), TopMovieDetail.class);
+                Intent intent = new Intent(getActivity(), MovieDetail.class);
 
                 intent.putExtra("TYPE", movie.getId());
                 startActivity(intent);

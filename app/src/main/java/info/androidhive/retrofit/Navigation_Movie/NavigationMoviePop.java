@@ -17,6 +17,7 @@ import java.util.List;
 
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
+import info.androidhive.retrofit.activity.MovieDetail;
 import info.androidhive.retrofit.adapter.PopMovieAdapter;
 import info.androidhive.retrofit.adapter.TopMovieAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
@@ -113,7 +114,7 @@ public class NavigationMoviePop extends Fragment {
             public boolean onClick(RecyclerView parent, View view, int position, long id) {
                 PopMovieAdapter popMovieAdapter = (PopMovieAdapter) recyclerView.getAdapter();
                 PopMovie movie = PopMovieAdapter.popMovies.get(position);
-                Intent intent = new Intent(getActivity(), TopMovieDetail.class);
+                Intent intent = new Intent(getActivity(), MovieDetail.class);
 
                 intent.putExtra("TYPE", movie.getId());
                 startActivity(intent);

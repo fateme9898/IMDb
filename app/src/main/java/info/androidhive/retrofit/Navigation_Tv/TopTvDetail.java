@@ -1,7 +1,6 @@
 package info.androidhive.retrofit.Navigation_Tv;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,16 +18,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import info.androidhive.retrofit.Navigation_Movie.TopMovieDetail;
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.activity.MainActivity;
-import info.androidhive.retrofit.activity.PeapleDetail;
 import info.androidhive.retrofit.activity.Saved;
 import info.androidhive.retrofit.activity.Search;
-import info.androidhive.retrofit.activity.TvDetail;
 import info.androidhive.retrofit.adapter.SimilarTvAdapter;
 import info.androidhive.retrofit.another.ItemTouchListener;
-import info.androidhive.retrofit.model.Movie.Movie;
 import info.androidhive.retrofit.model.Tv.Tv;
 import info.androidhive.retrofit.model.Tv.TvResponse;
 import info.androidhive.retrofit.model.trailer.Trailer;

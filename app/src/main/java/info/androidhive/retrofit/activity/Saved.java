@@ -1,6 +1,5 @@
 package info.androidhive.retrofit.activity;
 
-import android.Manifest;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,19 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
-import java.nio.channels.InterruptedByTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 
-import info.androidhive.retrofit.Navigation_Movie.TopMovieDetail;
 import info.androidhive.retrofit.R;
 import info.androidhive.retrofit.adapter.FavoriteAdapter;
-import info.androidhive.retrofit.adapter.FilterPeopleAdapter;
-import info.androidhive.retrofit.adapter.MoviesAdapter;
-import info.androidhive.retrofit.another.ItemTouchListener;
 import info.androidhive.retrofit.db.FavoriteDatabase;
 import info.androidhive.retrofit.db.FavoriteList;
-import info.androidhive.retrofit.model.filter_search.FilterPeople;
 
 
 public class Saved extends AppCompatActivity implements FavoriteAdapter.ViewHolder.ItemClickListener {
@@ -92,7 +85,7 @@ public class Saved extends AppCompatActivity implements FavoriteAdapter.ViewHold
     @Override
     public void onClick(int position) {
         final FavoriteList favoriteList = favoriteLists.get(position);
-        Intent intent = new Intent(this, TopMovieDetail.class);
+        Intent intent = new Intent(this, MovieDetail.class);
         intent.putExtra("TYPE", favoriteList.getId());
         startActivity(intent);
     }
